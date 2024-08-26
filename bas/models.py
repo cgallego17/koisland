@@ -1,5 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
+
+# Clase Modelo.
+class ClaseModelo(models.Model):
+    estado = models.BooleanField(default=True)
+    fc = models.DateTimeField(auto_now_add=True)
+    fm = models.DateTimeField(auto_now=True)
+    uc = models.ForeignKey(settings.AUTH_USER_MODEL,null=True, blank=True, on_delete=models.DO_NOTHING, related_name='%(class)s_requests_created')
+    um = models.IntegerField(blank=True,null=True)
+    
+    class Meta:
+        abstract=True
 
 #Empresa
 class Empresa(models.Model):

@@ -1,0 +1,8 @@
+.page-wrapper .page-body-wrapper .page-sidebar .main-header-left .logo-wrapper {
+    padding-left: 40px;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+    background-color: #35bbae !important;
+    border-color: #35bbae !important;
+}

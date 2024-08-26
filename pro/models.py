@@ -1,15 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
+from bas.models import *
 
-class Categoria(models.Model):
+class Categoria(ClaseModelo):
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField(blank=True, null=True)
-    creado_por = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.nombre
 
-class Producto(models.Model):
+class Producto(ClaseModelo):
     # Información básica
     titulo = models.CharField(max_length=200)
     descripcion = models.TextField()
@@ -47,17 +47,16 @@ class Producto(models.Model):
     disponible = models.BooleanField(default=True)
     
     # Información de seguimiento
-    creado_por = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     creado_en = models.DateTimeField(auto_now_add=True)
     actualizado_en = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.titulo
 
-class Imagen(models.Model):
+class Imagen(ClaseModelo):
     imagen = models.ImageField(upload_to='productos/')
     descripcion = models.CharField(max_length=200, blank=True, null=True)
-    creado_por = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+
 
     def __str__(self):
         return self.descripcion or "Imagen"
