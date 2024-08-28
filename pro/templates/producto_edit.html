@@ -1,0 +1,197 @@
+{% extends 'base/index.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="page-header-left">
+          <h3>
+            Crear Producto
+            <small>Producto</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <ol class="breadcrumb pull-right">
+          <li class="breadcrumb-item">
+            <a href="/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-home">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </a>
+          </li>
+          <li class="breadcrumb-item">Producto</li>
+          <li class="breadcrumb-item active">Crear Producto</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Detalles del producto</h5>
+        </div>
+
+        <div class="card-body">
+
+          <div class="digital-add needs-validation">
+            <div class="form-group">
+              <label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
+                Titulo</label>
+              <input type="text" id="titulo" name="titulo" class="form-control" text-transform: uppercase;
+                placeholder="Ingresa el nombre del producto" required>
+            </div>
+
+            <div class="form-group">
+              <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span> Sku</label>
+              <input type="text" id="sku" name="sku" class="form-control" text-transform: uppercase;
+                placeholder="Ingresa el sku" required>
+            </div>
+
+            <div class="form-group">
+              <label class="col-form-label categories-basic"><span>*</span>
+                Categoria</label>
+              <select class="custom-select form-control" required="">
+                <option value="">--Seleccionar--</option>
+                {% for categoria in categorias %}
+                <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="col-form-label">Descripcion</label><span>*</span>
+              <textarea rows="5" cols="12" name="descripcion">{{ descripcion }}</textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="precio" class="col-form-label"><span>*</span>
+                Precio del Producto</label>
+              <input class="form-control" id="precio" type="number" name="precio" value="{{ precio }}" required>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row product-adding">
+      <div class="col-xl-6">
+        <div class="card">
+          <div class="card-header">
+            <h5>Atributos generales</h5>
+          </div>
+          <div class="card-body">
+            <div class="digital-add needs-validation">
+
+              <div class="form-group">
+                <label class="col-form-label categories-basic"><span>*</span>
+                  Marca</label>
+                <select class="custom-select form-control" required="">
+                  <option value="">--Seleccionar--</option>
+                  {% for marca in marcas %}
+                  <option value="{{ marca.id }}">{{ marca.nombre }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
+                  Modelo</label>
+                <input type="text" id="modelo" name="modelo" class="form-control" text-transform: uppercase;
+                  placeholder="Ingresa el modelo del producto" required>
+              </div>
+
+              <div class="form-group">
+                <label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
+                  Dimensiones</label>
+                <input type="text" id="dimensiones" name="dimensiones" class="form-control" text-transform: uppercase;
+                  placeholder="Ingresa las dimensiones del producto" required>
+              </div>
+
+              <div class="form-group">
+                <label for="peso" class="col-form-label"><span>*</span>
+                  Peso</label>
+                <input class="form-control" id="peso" type="number" name="peso" value="{{ peso }}" required>
+              </div>
+
+              <div class="form-group">
+                <label for="stock" class="col-form-label"><span>*</span>
+                  Stock </label>
+                <input class="form-control" id="stock" type="number" name="stock" value="{{ stock }}" required>
+              </div>
+
+              <div class="form-group">
+                <label class="col-form-label"><span>*</span> Estado</label>
+                <div class="m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated">
+                  <label class="d-block" for="disponible">
+                    <input class="radio_animated" id="disponible" type="radio" name="disponible" value="True" 
+                    {% if object.disponible %}checked{% endif %}>
+                    Disponible
+                  </label>
+                  <label class="d-block" for="no_disponible">
+                    <input class="radio_animated" id="no_disponible" type="radio" name="disponible" value="False"
+                     {% if not object.disponible %}checked{% endif %}>
+                    No Disponible
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-6">
+        <div class="card">
+          <div class="card-header">
+            <h5>Imagenes del producto</h5>
+          </div>
+          <div class="card-body">
+            <div class="image-gallery">
+              <div class="main-image">
+                <img src="image-path.jpg" alt="Main Image">
+              </div>
+              <div class="thumbnails">
+                <div class="thumbnail">
+                  <img src="thumbnail1.jpg" alt="Thumbnail 1">
+                  <button class="delete-btn">del</button>
+                </div>
+                <div class="thumbnail">
+                  <img src="thumbnail2.jpg" alt="Thumbnail 2">
+                  <button class="delete-btn">del</button>
+                </div>
+                <div class="thumbnail">
+                  <img src="thumbnail3.jpg" alt="Thumbnail 3">
+                  <button class="delete-btn">del</button>
+                </div>
+              </div>
+              <div class="upload-section">
+                <label for="file-input">Agregar Imágenes</label>
+                <input type="file" id="file-input" class="file-input">
+                <button class="upload-btn">Añadir Imagen</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="float-right">
+        <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar</button>
+      </div>
+  </form>
+
+</div>
+</div>
+
+{% endblock %}

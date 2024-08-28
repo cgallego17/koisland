@@ -14,7 +14,7 @@ class ClaseModelo(models.Model):
         abstract=True
 
 #Empresa
-class Empresa(models.Model):
+class Empresa(ClaseModelo):
 
     # Fields
     nombre = models.CharField(max_length=250)
@@ -29,7 +29,6 @@ class Empresa(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     whatsapp = models.IntegerField(blank=True, null=True)
     estado = models.BooleanField(default=True)
-    creado_por = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return '{}'.format(self.nombre)

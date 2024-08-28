@@ -6,3 +6,12 @@
     background-color: #35bbae !important;
     border-color: #35bbae !important;
 }
+
+.page-wrapper .page-body-wrapper .page-sidebar .sidebar-user {
+    padding: 10px 10px !important;
+
+}
+
+.card .card-header {
+    padding: 20px !important;
+}
