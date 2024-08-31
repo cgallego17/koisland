@@ -35,8 +35,8 @@
 
 </div>
 
-<div class="container-fluid">
-  <form action="" method="POST" enctype="multipart/form-data">
+<div class="container-fluid"> 
+  <form action="{% url 'pro:producto_add' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="row product-adding">
       <div class="col-xl-6">
@@ -49,8 +49,8 @@
             <div class="digital-add needs-validation">
               <div class="form-group">
                 <label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
-                  Titulo</label>
-                <input type="text" id="titulo" name="titulo" class="form-control" text-transform: uppercase;
+                  Nombre</label>
+                <input type="text" id="nombre" name="nombre" class="form-control" text-transform: uppercase;
                   placeholder="Ingresa el nombre del producto" required>
               </div>
 
@@ -63,7 +63,7 @@
               <div class="form-group">
                 <label class="col-form-label categories-basic"><span>*</span>
                   Categoria</label>
-                <select class="custom-select form-control" required="">
+                <select class="custom-select form-control" name="categoria" id="categoria" required>
                   <option value="">--Seleccionar--</option>
                   {% for categoria in categorias %}
                   <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
@@ -98,7 +98,7 @@
               <div class="form-group">
                 <label class="col-form-label categories-basic"><span>*</span>
                   Marca</label>
-                <select class="custom-select form-control" required="">
+                <select class="custom-select form-control" name="marca" id="marca" required>
                   <option value="">--Seleccionar--</option>
                   {% for marca in marcas %}
                   <option value="{{ marca.id }}">{{ marca.nombre }}</option>

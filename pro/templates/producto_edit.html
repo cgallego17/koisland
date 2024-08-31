@@ -2,6 +2,21 @@
 {% load static %}
 {% block content %}
 
+<style>
+  .image-preview {
+    width: 100%;
+    height: auto;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 10px;
+  }
+
+  .main-image {
+    height: 400px;
+  }
+</style>
+
 <div class="container-fluid">
   <div class="page-header">
     <div class="row">
@@ -48,15 +63,15 @@
           <div class="digital-add needs-validation">
             <div class="form-group">
               <label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
-                Titulo</label>
-              <input type="text" id="titulo" name="titulo" class="form-control" text-transform: uppercase;
-                placeholder="Ingresa el nombre del producto" required>
+                Nombre</label>
+              <input type="text" id="nombre" name="nombre" class="form-control" value="{{producto.nombre}}"
+                text-transform: uppercase; placeholder="Ingresa el nombre del producto" required>
             </div>
 
             <div class="form-group">
               <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span> Sku</label>
-              <input type="text" id="sku" name="sku" class="form-control" text-transform: uppercase;
-                placeholder="Ingresa el sku" required>
+              <input type="text" id="sku" name="sku" class="form-control" value="{{producto.sku}}" text-transform:
+                uppercase; placeholder="Ingresa el sku" required>
             </div>
 
             <div class="form-group">
@@ -72,13 +87,14 @@
 
             <div class="form-group">
               <label class="col-form-label">Descripcion</label><span>*</span>
-              <textarea rows="5" cols="12" name="descripcion">{{ descripcion }}</textarea>
+              <textarea rows="5" cols="12" name="descripcion">{{ producto.descripcion }}</textarea>
             </div>
 
             <div class="form-group">
               <label for="precio" class="col-form-label"><span>*</span>
                 Precio del Producto</label>
-              <input class="form-control" id="precio" type="number" name="precio" value="{{ precio }}" required>
+              <input class="form-control" id="precio" type="number" name="precio" value="{{ producto.precio }}"
+                required>
             </div>
 
           </div>
@@ -109,39 +125,37 @@
                 <label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
                   Modelo</label>
                 <input type="text" id="modelo" name="modelo" class="form-control" text-transform: uppercase;
-                  placeholder="Ingresa el modelo del producto" required>
+                  placeholder="Ingresa el modelo del producto" value="{{ producto.modelo }}" required>
               </div>
 
               <div class="form-group">
                 <label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
                   Dimensiones</label>
                 <input type="text" id="dimensiones" name="dimensiones" class="form-control" text-transform: uppercase;
-                  placeholder="Ingresa las dimensiones del producto" required>
+                  placeholder="Ingresa las Dimensiones del producto" value="{{ producto.dimensiones }}" required>
               </div>
 
               <div class="form-group">
                 <label for="peso" class="col-form-label"><span>*</span>
                   Peso</label>
-                <input class="form-control" id="peso" type="number" name="peso" value="{{ peso }}" required>
+                <input class="form-control" id="peso" type="number" name="peso" value="{{ producto.peso }}" required>
               </div>
 
               <div class="form-group">
                 <label for="stock" class="col-form-label"><span>*</span>
                   Stock </label>
-                <input class="form-control" id="stock" type="number" name="stock" value="{{ stock }}" required>
+                <input class="form-control" id="stock" type="number" name="stock" value="{{ producto.stock }}" required>
               </div>
 
               <div class="form-group">
                 <label class="col-form-label"><span>*</span> Estado</label>
                 <div class="m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated">
                   <label class="d-block" for="disponible">
-                    <input class="radio_animated" id="disponible" type="radio" name="disponible" value="True" 
-                    {% if object.disponible %}checked{% endif %}>
+                    <input class="radio_animated" id="disponible" type="radio" name="disponible" value="True" {% if producto.disponible %}checked{% endif %}>
                     Disponible
                   </label>
                   <label class="d-block" for="no_disponible">
-                    <input class="radio_animated" id="no_disponible" type="radio" name="disponible" value="False"
-                     {% if not object.disponible %}checked{% endif %}>
+                    <input class="radio_animated" id="no_disponible" type="radio" name="disponible" value="False" {% if not producto.disponible %}checked{% endif %}>
                     No Disponible
                   </label>
                 </div>
@@ -156,40 +170,95 @@
           <div class="card-header">
             <h5>Imagenes del producto</h5>
           </div>
+
           <div class="card-body">
-            <div class="image-gallery">
-              <div class="main-image">
-                <img src="image-path.jpg" alt="Main Image">
-              </div>
-              <div class="thumbnails">
-                <div class="thumbnail">
-                  <img src="thumbnail1.jpg" alt="Thumbnail 1">
-                  <button class="delete-btn">del</button>
+            <div class="card">
+              <img class="card-img-top" src="{{ producto.imagen_principal.url }}" alt="Card image cap">
+            </div>
+
+            <div class="container">
+              <div class="row">
+                <div class="col-2">
+                  <div class="card" style="width: 5rem;">
+                    <img class="card-img-top" src="{{ producto.imagen_principal.url }}"
+                      alt="Card image cap">
+                    <div class="card-body text-center">
+                      <form action="/prod/imagen/producto/delete/189/" method="POST" enctype="multipart/form-data"
+                        onsubmit="return confirm('Segur@ que deseas borrar la imagen?')">
+                        <input type="hidden" name="csrfmiddlewaretoken"
+                          value="oyrdhK1TFeQdCXOv7fpAyuUf4dRVACLvvyCYJxiJuP3Sv6YMsBlh9mbtDXa95SKm">
+                        <button type="submit" class="btn btn-danger">del</button>
+                      </form>
+                    </div>
+                  </div>
                 </div>
-                <div class="thumbnail">
-                  <img src="thumbnail2.jpg" alt="Thumbnail 2">
-                  <button class="delete-btn">del</button>
+
+                <div class="col-2">
+                  <div class="card" style="width: 5rem;">
+                    <img class="card-img-top" src="/media/imgs-imgAtrProd/AFTER-SHAVE3_jfqCxrU.jpg"
+                      alt="Card image cap">
+                    <div class="card-body text-center">
+                      <form action="/prod/imagen/producto/delete/190/" method="POST" enctype="multipart/form-data"
+                        onsubmit="return confirm('Segur@ que deseas borrar la imagen?')">
+                        <input type="hidden" name="csrfmiddlewaretoken"
+                          value="oyrdhK1TFeQdCXOv7fpAyuUf4dRVACLvvyCYJxiJuP3Sv6YMsBlh9mbtDXa95SKm">
+                        <button type="submit" class="btn btn-danger">del</button>
+                      </form>
+                    </div>
+                  </div>
                 </div>
-                <div class="thumbnail">
-                  <img src="thumbnail3.jpg" alt="Thumbnail 3">
-                  <button class="delete-btn">del</button>
+
+                <div class="col-2">
+                  <div class="card" style="width: 5rem;">
+                    <img class="card-img-top" src="/media/imgs-imgAtrProd/AFTER-SHAVE4_E0SnfTD.jpg"
+                      alt="Card image cap">
+                    <div class="card-body text-center">
+                      <form action="/prod/imagen/producto/delete/191/" method="POST" enctype="multipart/form-data"
+                        onsubmit="return confirm('Segur@ que deseas borrar la imagen?')">
+                        <input type="hidden" name="csrfmiddlewaretoken"
+                          value="oyrdhK1TFeQdCXOv7fpAyuUf4dRVACLvvyCYJxiJuP3Sv6YMsBlh9mbtDXa95SKm">
+                        <button type="submit" class="btn btn-danger">del</button>
+                      </form>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="upload-section">
-                <label for="file-input">Agregar Imágenes</label>
-                <input type="file" id="file-input" class="file-input">
-                <button class="upload-btn">Añadir Imagen</button>
               </div>
             </div>
+
+            <div class="card-body text-center">
+              <form action="/prod/imagen/producto/add/100019/" enctype="multipart/form-data" method="POST">
+                <input type="hidden" name="csrfmiddlewaretoken" value="oyrdhK1TFeQdCXOv7fpAyuUf4dRVACLvvyCYJxiJuP3Sv6YMsBlh9mbtDXa95SKm">
+                <div class="custom-file">
+                  <label for="image" class="form-label">Agregar Imagenes</label>
+                  <input class="form-control" type="file" id="image" name="image" required="">
+                </div>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-success">Añadir Imagen</button>
+              </form>
+            </div>
+
           </div>
+
         </div>
       </div>
-
 
       <div class="float-right">
         <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar</button>
       </div>
+
+
   </form>
+
+  <script>
+    // Cambiar la imagen principal al hacer clic en una miniatura
+    document.querySelectorAll('.thumb-image').forEach(function (thumb) {
+      thumb.addEventListener('click', function () {
+        const imageUrl = this.style.backgroundImage;
+        document.getElementById('mainImagePreview').style.backgroundImage = imageUrl;
+      });
+    });
+  </script>
 
 </div>
 </div>

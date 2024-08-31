@@ -52,21 +52,40 @@
       <table class="table all-package">
         <thead>
           <tr>
-            <th>Título</th>
-            <th>Descripción</th>
+            <th>#</th>
+            <th>Imagen</th>
+            <th>Sku</th>
+            <th>Nombre</th>
             <th>Precio</th>
             <th>Stock</th>
             <th>Categoría</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           {% for producto in object_list %}
           <tr>
-            <td>{{ producto.titulo }}</td>
-            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.id }}</td>
+            <td>
+              {% if producto.imagen_principal %}
+                <img class="img-60" src="{{ producto.imagen_principal.url }}" alt="#" />
+              {% else %}
+                <p>Sin imagen</p>
+              {% endif %}
+            </td>
+            <td>{{ producto.sku }}</td>
+            <td>{{ producto.nombre }}</td>
             <td>{{ producto.precio }}</td>
             <td>{{ producto.stock }}</td>
             <td>{{ producto.categoria.nombre }}</td>
+            <td>
+              <a href="{% url 'pro:producto_edit' producto.id %}">
+                <i class="fa fa-edit" title="Edit"></i>
+              </a>
+              <a href="{% url 'pro:eliminar_producto' producto.id %}"> 
+                <i class="fa fa-trash text-danger" title="Delete"></i>
+              </a>
+            </td>
           </tr>
           {% endfor %}
         </tbody>

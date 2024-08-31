@@ -19,5 +19,7 @@ urlpatterns = [
     # Productos
     path('productos/', ProductoListView.as_view(), name='producto_list'),
     path('producto/add/', ProdViewNew, name='producto_create'),
+    path('producto/edit/<int:id>', ProdEdit, name='producto_edit'),
+    path('producto/form/add/', ProdAdd, name='producto_add'),
     path('productos/<int:pk>/eliminar/', EliminarObjetoView.as_view(model=Producto), name='eliminar_producto', kwargs={'return_url': 'pro:producto_list'}),
 ]

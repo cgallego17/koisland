@@ -42,7 +42,7 @@ class Producto(ClaseModelo):
     disponible = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.titulo
+        return self.nombre
 
 class Imagen(ClaseModelo):
     imagen = models.ImageField(upload_to='productos/')
