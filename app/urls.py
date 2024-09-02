@@ -18,12 +18,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('',include(('bas.urls','bas'), namespace='bas')),
+    path('',include(('web.urls','web'), namespace='web')),
+    path('dash/',include(('bas.urls','bas'), namespace='bas')),
     path('usr/',include(('usr.urls','usr'), namespace='usr')),
     path('pro/',include(('pro.urls','pro'), namespace='pro')),
     path('admin/', admin.site.urls),
+
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]
 
 if settings.DEBUG:

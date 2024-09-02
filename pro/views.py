@@ -4,9 +4,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-
-class CategoriaListView(ListView):
+class CategoriaListView(LoginRequiredMixin, ListView):
+    login_url = 'bas:login'
     model = Categoria
     template_name = 'categoria_list.html'
     paginate_by = 10  # número de categorías por página
@@ -16,7 +17,8 @@ class CategoriaListView(ListView):
         context['titulo'] = 'Listado de Categorías'
         return context
 
-class MarcasListView(ListView):
+class MarcasListView(LoginRequiredMixin, ListView):
+    login_url = 'bas:login'
     model = Marca
     template_name = 'marcas_list.html'
     paginate_by = 10  # número de productos por página
@@ -26,7 +28,8 @@ class MarcasListView(ListView):
         context['titulo'] = 'Listado de marcas'
         return context
 
-class ProductoListView(ListView):
+class ProductoListView(LoginRequiredMixin, ListView):
+    login_url = 'bas:login'
     model = Producto
     template_name = 'productos_list.html'
     paginate_by = 10  # número de productos por página
@@ -36,7 +39,7 @@ class ProductoListView(ListView):
         context['titulo'] = 'Listado de Productos'
         return context    
 
-@login_required(login_url='bases:login')
+@login_required(login_url='bas:login')
 def ProdViewNew(request):
     template_name="producto_new.html"
     marcas=Marca.objects.all()
@@ -51,7 +54,7 @@ def ProdViewNew(request):
     return render(request,template_name,context)
 
 #Guardar Producto
-@login_required(login_url='bases:login')
+@login_required(login_url='bas:login')
 def ProdAdd(request):
     contexto = {}
     if request.method == "POST":
@@ -83,7 +86,7 @@ def ProdAdd(request):
     return render(request, contexto)
 
 #Editar Producto 
-@login_required(login_url='bases:login')
+@login_required(login_url='bas:login')
 def ProdEdit(request, id):
     # Obtener el producto que se va a editar
     producto = get_object_or_404(Producto, id=id)
@@ -129,7 +132,7 @@ def ProdEdit(request, id):
     return render(request, "producto_edit.html", contexto)
 
 #Adadir imagen a producto
-@login_required(login_url='bases:login')
+@login_required(login_url='bas:login')
 def asociarProductoImagen(request, id):
     if request.method == "POST":
         imagen=request.FILES['imagen']
@@ -148,12 +151,11 @@ def asociarProductoImagen(request, id):
         if not ImagenProducto:
             messages.error(request, 'Error al anadir imagen')
 
-@login_required(login_url='bases:login')
+@login_required(login_url='bas:login')
 def eliminarProductoImagen(request, id):
     imagen= Imagen.objects.get(id=id)
     producto = get_object_or_404(Producto, id=imagen.producto.id)
     
-
     if request.method == "POST":
         try:
             imagen_producto = Imagen.objects.get(id=id)

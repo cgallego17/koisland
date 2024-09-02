@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, CreateView, DeleteView
 from django.urls import reverse
 from django.views.generic import UpdateView
@@ -7,11 +8,14 @@ from django.http import Http404
 from .models import *
 from .forms import *
 
+
 #Dashboard
+@login_required(login_url='bas:login')
 def home(request):
     return render(request, 'base/index.html')
 
 #Editar Empresa
+@login_required(login_url='bas:login')
 def empresa_edit(request):
     empresa = Empresa.objects.first()
     if not empresa:
@@ -28,6 +32,7 @@ def empresa_edit(request):
     return render(request, 'empresa_edit.html', {'form': form})
 
 class CrearObjetoView(CreateView):
+    login_url = 'bas:login'
     template_name = 'crear_objeto.html'
     model = None  
 
@@ -49,6 +54,7 @@ class CrearObjetoView(CreateView):
         return reverse(return_url)
 
 class EditarObjetoView(UpdateView):
+    login_url = 'bas:login'
     template_name = 'editar_objeto.html'
     model = None  
 
@@ -77,6 +83,7 @@ class EditarObjetoView(UpdateView):
         return reverse(return_url)
 
 class EliminarObjetoView(DeleteView):
+    login_url = 'bas:login'
     template_name = 'eliminar_objeto.html'
 
     def __init__(self, **kwargs):

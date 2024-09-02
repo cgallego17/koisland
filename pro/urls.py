@@ -26,6 +26,4 @@ urlpatterns = [
     #Anadir imagenes a productos
     path('producto/imagen/add/<int:id>/', asociarProductoImagen, name='producto_add_image'),
     path('producto/imagen/eliminar/<int:id>/', eliminarProductoImagen, name='producto_delete_image'),
-
-
 ]

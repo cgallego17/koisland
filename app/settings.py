@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'pro',
     'ven',
     'usr',
+    'web',
     'bas.templatetags',
 ]
 
@@ -125,6 +126,10 @@ USE_TZ = True
 
 AUTH_USER_MODEL = 'usr.User'
 
+#Login
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/dash/'
+LOGOUT_REDIRECT_URL = '/'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
