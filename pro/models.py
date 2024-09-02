@@ -45,9 +45,9 @@ class Producto(ClaseModelo):
         return self.nombre
 
 class Imagen(ClaseModelo):
-    imagen = models.ImageField(upload_to='productos/')
+    imagen = models.ImageField(upload_to='productos/imagenes/')
     descripcion = models.CharField(max_length=200, blank=True, null=True)
     producto = models.ForeignKey(Producto, related_name='productos', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.descripcion or "Imagen"
+        return self.descripcion

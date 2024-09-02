@@ -23,7 +23,7 @@
       <div class="col-lg-6">
         <div class="page-header-left">
           <h3>
-            Crear Producto
+            Editar Producto
             <small>Producto</small>
           </h3>
         </div>
@@ -42,7 +42,7 @@
             </a>
           </li>
           <li class="breadcrumb-item">Producto</li>
-          <li class="breadcrumb-item active">Crear Producto</li>
+          <li class="breadcrumb-item active">Editar Producto</li>
         </ol>
       </div>
     </div>
@@ -50,7 +50,7 @@
 </div>
 
 <div class="container-fluid">
-  <form action="" method="POST" enctype="multipart/form-data">
+  <form action="{% url 'pro:producto_edit' producto.id %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="col-xl-12">
       <div class="card">
@@ -77,10 +77,12 @@
             <div class="form-group">
               <label class="col-form-label categories-basic"><span>*</span>
                 Categoria</label>
-              <select class="custom-select form-control" required="">
+              <select class="custom-select form-control" name="categoria" id="categoria" required>
                 <option value="">--Seleccionar--</option>
                 {% for categoria in categorias %}
-                <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+                <option value="{{ categoria.id }}" {% if categoria.id == selectedCategory.id %} selected {% endif %}>
+                  {{ categoria.nombre }}
+                </option>
                 {% endfor %}
               </select>
             </div>
@@ -101,22 +103,25 @@
         </div>
       </div>
     </div>
+
     <div class="row product-adding">
       <div class="col-xl-6">
         <div class="card">
           <div class="card-header">
             <h5>Atributos generales</h5>
           </div>
+
           <div class="card-body">
             <div class="digital-add needs-validation">
-
               <div class="form-group">
                 <label class="col-form-label categories-basic"><span>*</span>
                   Marca</label>
-                <select class="custom-select form-control" required="">
+                <select class="custom-select form-control" name="marca" id="marca" required>
                   <option value="">--Seleccionar--</option>
                   {% for marca in marcas %}
-                  <option value="{{ marca.id }}">{{ marca.nombre }}</option>
+                  <option value="{{ marca.id }}" {% if marca.id == selectedMarca.id %} selected {% endif %}>
+                    {{ marca.nombre }}
+                  </option>
                   {% endfor %}
                 </select>
               </div>
@@ -146,16 +151,23 @@
                   Stock </label>
                 <input class="form-control" id="stock" type="number" name="stock" value="{{ producto.stock }}" required>
               </div>
+              
+              <div class="form-group">
+                <label for="id_imagen_principal" class="form-label">Imagen Principal:</label>
+                <input type="file" name="imagen_principal" id="id_imagen_principal" class="form-control">
+              </div>
 
               <div class="form-group">
                 <label class="col-form-label"><span>*</span> Estado</label>
                 <div class="m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated">
                   <label class="d-block" for="disponible">
-                    <input class="radio_animated" id="disponible" type="radio" name="disponible" value="True" {% if producto.disponible %}checked{% endif %}>
+                    <input class="radio_animated" id="disponible" type="radio" name="disponible" value="True" 
+                    {% if producto.disponible %} checked {% endif %}>
                     Disponible
                   </label>
                   <label class="d-block" for="no_disponible">
-                    <input class="radio_animated" id="no_disponible" type="radio" name="disponible" value="False" {% if not producto.disponible %}checked{% endif %}>
+                    <input class="radio_animated" id="no_disponible" type="radio" name="disponible" value="False" 
+                    {% if not producto.disponible %} checked {% endif %}>
                     No Disponible
                   </label>
                 </div>
@@ -163,104 +175,62 @@
             </div>
           </div>
         </div>
+        <div class="float-right">
+          <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar</button>
+        </div>
+      </div>
+    </form>
+
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5>Imagenes del producto</h5>
       </div>
 
-      <div class="col-xl-6">
+      <div class="card-body">
         <div class="card">
-          <div class="card-header">
-            <h5>Imagenes del producto</h5>
-          </div>
+          {% if producto.imagen_principal %}
+            <img class="card-img-top" src="{{ producto.imagen_principal.url }}" alt="Imagen del producto">
+          {% else %}
+            <p>Sin imagen</p>
+          {% endif %}
+        </div>
 
-          <div class="card-body">
-            <div class="card">
-              <img class="card-img-top" src="{{ producto.imagen_principal.url }}" alt="Card image cap">
-            </div>
-
-            <div class="container">
-              <div class="row">
-                <div class="col-2">
-                  <div class="card" style="width: 5rem;">
-                    <img class="card-img-top" src="{{ producto.imagen_principal.url }}"
-                      alt="Card image cap">
-                    <div class="card-body text-center">
-                      <form action="/prod/imagen/producto/delete/189/" method="POST" enctype="multipart/form-data"
-                        onsubmit="return confirm('Segur@ que deseas borrar la imagen?')">
-                        <input type="hidden" name="csrfmiddlewaretoken"
-                          value="oyrdhK1TFeQdCXOv7fpAyuUf4dRVACLvvyCYJxiJuP3Sv6YMsBlh9mbtDXa95SKm">
-                        <button type="submit" class="btn btn-danger">del</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-2">
-                  <div class="card" style="width: 5rem;">
-                    <img class="card-img-top" src="/media/imgs-imgAtrProd/AFTER-SHAVE3_jfqCxrU.jpg"
-                      alt="Card image cap">
-                    <div class="card-body text-center">
-                      <form action="/prod/imagen/producto/delete/190/" method="POST" enctype="multipart/form-data"
-                        onsubmit="return confirm('Segur@ que deseas borrar la imagen?')">
-                        <input type="hidden" name="csrfmiddlewaretoken"
-                          value="oyrdhK1TFeQdCXOv7fpAyuUf4dRVACLvvyCYJxiJuP3Sv6YMsBlh9mbtDXa95SKm">
-                        <button type="submit" class="btn btn-danger">del</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-2">
-                  <div class="card" style="width: 5rem;">
-                    <img class="card-img-top" src="/media/imgs-imgAtrProd/AFTER-SHAVE4_E0SnfTD.jpg"
-                      alt="Card image cap">
-                    <div class="card-body text-center">
-                      <form action="/prod/imagen/producto/delete/191/" method="POST" enctype="multipart/form-data"
-                        onsubmit="return confirm('Segur@ que deseas borrar la imagen?')">
-                        <input type="hidden" name="csrfmiddlewaretoken"
-                          value="oyrdhK1TFeQdCXOv7fpAyuUf4dRVACLvvyCYJxiJuP3Sv6YMsBlh9mbtDXa95SKm">
-                        <button type="submit" class="btn btn-danger">del</button>
-                      </form>
-                    </div>
-                  </div>
+        <div class="container">
+          <div class="row justify-content-center">
+            {% for imagen in imagenesProducto %}
+            <div class="col-6 col-sm-4">
+              <div class="card text-center position-relative">
+                <img class="card-img-top" src="{{ imagen.imagen.url }}" alt="{{ imagen.producto }}"
+                  style="height: 10rem; object-fit: cover;">
+                <div class="position-absolute" style="top: 5px; right: 5px;"> 
+                  <form action="{% url 'pro:producto_delete_image' imagen.id %}" method="POST" enctype="multipart/form-data"
+                    onsubmit="return confirm('¿Segur@ que deseas borrar la imagen?')">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm"
+                      style="border-radius: 50%; width: 20px; height: 20px; padding: 0;">&times;</button>
+                  </form>
                 </div>
               </div>
             </div>
-
-            <div class="card-body text-center">
-              <form action="/prod/imagen/producto/add/100019/" enctype="multipart/form-data" method="POST">
-                <input type="hidden" name="csrfmiddlewaretoken" value="oyrdhK1TFeQdCXOv7fpAyuUf4dRVACLvvyCYJxiJuP3Sv6YMsBlh9mbtDXa95SKm">
-                <div class="custom-file">
-                  <label for="image" class="form-label">Agregar Imagenes</label>
-                  <input class="form-control" type="file" id="image" name="image" required="">
-                </div>
-                <br>
-                <br>
-                <button type="submit" class="btn btn-success">Añadir Imagen</button>
-              </form>
-            </div>
-
+            {% endfor %}
           </div>
-
         </div>
+
+        <div class="card-body text-center">
+          <form action="{% url 'pro:producto_add_image' producto.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="custom-file">
+              <label for="imagen" class="form-label">Agregar Imagenes</label>
+              <input class="form-control" type="file" id="imagen" name="imagen" required="">
+            </div>
+            <button type="submit" class="btn btn-success mt-2">Añadir Imagen</button>
+          </form>
+        </div>
+        
       </div>
-
-      <div class="float-right">
-        <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar</button>
-      </div>
-
-
-  </form>
-
-  <script>
-    // Cambiar la imagen principal al hacer clic en una miniatura
-    document.querySelectorAll('.thumb-image').forEach(function (thumb) {
-      thumb.addEventListener('click', function () {
-        const imageUrl = this.style.backgroundImage;
-        document.getElementById('mainImagePreview').style.backgroundImage = imageUrl;
-      });
-    });
-  </script>
-
-</div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}
