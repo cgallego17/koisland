@@ -1,0 +1,63 @@
+{% extends 'base/index.html' %} {% load static %} {% block content %}
+<div class="container-fluid">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="page-header-left">
+          <h3>
+            {{ album.nombre }}
+            <small>{{ album.nombre }}</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <ol class="breadcrumb pull-right">
+          <li class="breadcrumb-item">
+            <a href="/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-home">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </a>
+          </li>
+          <li class="breadcrumb-item">Album</li>
+          <li class="breadcrumb-item active">{{ album.nombre }}s</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-end">
+      <a href="{% url 'bas:add_image' %}" class="btn btn-primary btn-sm">Añadir</a>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-3">
+  <div class="row justify-content-center">
+    {% for image in imagenes %}
+    <div class="col-6 col-sm-2">
+      <div class="card text-center position-relative">
+        <img class="card-img-top" src="{{ image.imagen.url }}" alt="{{ imagen.nombre }}">
+        <div class="position-absolute" style="top: 5px; right: 5px;">
+          <a href="{% url 'bas:editar_image' image.id %}">
+            <i class="fa fa-edit" title="Edit"></i>
+          </a>
+
+          <form action="{% url 'bas:eliminar_image' image.id %}" method="POST" enctype="multipart/form-data"
+            onsubmit="return confirm('¿Segur@ que deseas borrar la imagen?')">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-sm"
+              style="border-radius: 50%; width: 20px; height: 20px; padding: 0;">&times;</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

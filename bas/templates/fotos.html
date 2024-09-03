@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ album.nombre }}</title>
+  <!-- Incluye Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">{{ album.nombre }}</h1>
+    <p>{{ album.descripcion }}</p>
+    <div class="row">
+      {% for image in album.imagenes.all %}
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="{{ image.imagen.url }}" class="card-img-top" alt="{{ image.titulo }}" />
+          <div class="card-body">
+            <h5 class="card-title">{{ image.titulo }}</h5>
+            <p class="card-text">{{ image.descripcion|truncatewords:20 }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <a href="{% url 'album_gallery' %}" class="btn btn-secondary mt-3">Volver a la galería</a>
+  </div>
+
+  <!-- Incluye jQuery y Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

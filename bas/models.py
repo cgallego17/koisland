@@ -32,3 +32,22 @@ class Empresa(ClaseModelo):
 
     def __str__(self):
         return '{}'.format(self.nombre)
+    
+
+# Create your models here.
+class AlbumGallery(ClaseModelo):
+    nombre = models.CharField(max_length=100, verbose_name="Nombre del Álbum")
+    descripcion = models.TextField(blank=True, null=True, verbose_name="Descripción")
+    imagen = models.ImageField(upload_to='imagenes/album/', verbose_name="Imagen")
+
+    def __str__(self):
+        return self.nombre
+
+class ImageGallery(ClaseModelo):
+    album = models.ForeignKey(AlbumGallery, related_name='imagenes', on_delete=models.CASCADE, verbose_name="Álbum")
+    titulo = models.CharField(max_length=100, verbose_name="Título de la Imagen")
+    imagen = models.ImageField(upload_to='imagenes/album/imagenes/', verbose_name="Imagen")
+    descripcion = models.TextField(blank=True, null=True, verbose_name="Descripción")
+
+    def __str__(self):
+        return self.titulo    

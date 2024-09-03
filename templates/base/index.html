@@ -53,7 +53,7 @@
       <div class="main-header-right row">
         <div class="main-header-left d-lg-none w-auto">
           <div class="logo-wrapper">
-            <a href="index.html">
+            <a href="{% url 'bas:admin_home' %}">
               <img class="blur-up lazyloaded d-block d-lg-none" src="assets/images/dashboard/multikart-logo-black.png"
                 alt="" />
             </a>
@@ -76,57 +76,9 @@
               </a>
             </li>
             <li class="onhover-dropdown">
-              <i data-feather="bell"></i>
-              <span class="badge badge-pill badge-primary pull-right notification-badge">3</span>
-              <span class="dot"></span>
-              <ul class="notification-dropdown onhover-show-div p-0">
-                <li>
-                  Notification
-                  <span class="badge badge-pill badge-primary pull-right">3</span>
-                </li>
-                <li>
-                  <div class="media">
-                    <div class="media-body">
-                      <h6 class="mt-0">
-                        <span>
-                          <i class="shopping-color" data-feather="shopping-bag"></i> </span>Your order ready for Ship..!
-                      </h6>
-                      <p class="mb-0">
-                        Lorem ipsum dolor sit amet, consectetuer.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media">
-                    <div class="media-body">
-                      <h6 class="mt-0 txt-success">
-                        <span>
-                          <i class="download-color font-success" data-feather="download"></i> </span>Download Complete
-                      </h6>
-                      <p class="mb-0">
-                        Lorem ipsum dolor sit amet, consectetuer.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media">
-                    <div class="media-body">
-                      <h6 class="mt-0 txt-danger">
-                        <span>
-                          <i class="alert-color font-danger" data-feather="alert-circle"></i> </span>250 MB trash files
-                      </h6>
-                      <p class="mb-0">
-                        Lorem ipsum dolor sit amet, consectetuer.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-                <li class="txt-dark">
-                  <a href="javascript:void(0)">All</a> notification
-                </li>
-              </ul>
+              <a class="text-dark" href="{% url 'web:inicio' %}"> 
+              <i data-feather="home"></i>
+              
             </li>
             <li class="onhover-dropdown">
               <div class="media align-items-center">
@@ -186,7 +138,7 @@
       <div class="page-sidebar">
         <div class="main-header-left d-none d-lg-block">
           <div class="logo-wrapper">
-            <a href="index.html">
+            <a href="{% url 'bas:admin_home' %}">
               <img class="d-none d-lg-block blur-up lazyloaded" src="{{ emp.logo.url }}"
                 alt="" />
             </a>
@@ -208,6 +160,37 @@
                 <i data-feather="home"></i>
                 <span>Dashboard</span>
               </a>
+            </li>
+
+            <li>
+              <a class="sidebar-header" href="javascript:void(0)">
+                <i data-feather="dollar-sign"></i>
+                <span>Ordenes</span>
+                <i class="fa fa-angle-right pull-right"></i>
+              </a>
+
+              <ul class="sidebar-submenu">
+                <li>
+                  <a href="order-list.html">
+                    <i class="fa fa-circle"></i>
+                    <span>Order List</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="order-tracking.html">
+                    <i class="fa fa-circle"></i>
+                    <span>Order Tracking</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="order-detail.html">
+                    <i class="fa fa-circle"></i>
+                    <span>Order Details</span>
+                  </a>
+                </li>
+              </ul>
             </li>
 
             <li>
@@ -240,60 +223,16 @@
             </li>
 
             <li>
-              <a class="sidebar-header" href="javascript:void(0)">
-                <i data-feather="archive"></i>
-                <span>Orders</span>
-                <i class="fa fa-angle-right pull-right"></i>
+              <a class="sidebar-header" href="{% url 'bas:albumes' %}">
+                <i data-feather="camera"></i>
+                <span>Galerias</span>
               </a>
-
-              <ul class="sidebar-submenu">
-                <li>
-                  <a href="order-list.html">
-                    <i class="fa fa-circle"></i>
-                    <span>Order List</span>
-                  </a>
-                </li>
-
-                <li>
-                  <a href="order-tracking.html">
-                    <i class="fa fa-circle"></i>
-                    <span>Order Tracking</span>
-                  </a>
-                </li>
-
-                <li>
-                  <a href="order-detail.html">
-                    <i class="fa fa-circle"></i>
-                    <span>Order Details</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              <a class="sidebar-header" href="javascript:void(0)">
-                <i data-feather="dollar-sign"></i>
-                <span>Sales</span>
-                <i class="fa fa-angle-right pull-right"></i>
-              </a>
-              <ul class="sidebar-submenu">
-                <li>
-                  <a href="order.html">
-                    <i class="fa fa-circle"></i>Orders
-                  </a>
-                </li>
-                <li>
-                  <a href="transactions.html">
-                    <i class="fa fa-circle"></i>Transactions
-                  </a>
-                </li>
-              </ul>
             </li>
 
             <li>
               <a class="sidebar-header" href="media.html">
                 <i data-feather="camera"></i>
-                <span>Media</span>
+                <span>Articulos</span>
               </a>
             </li>
 

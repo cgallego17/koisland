@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, CreateView, DeleteView
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views.generic import UpdateView
 from django.http import Http404
@@ -103,3 +104,21 @@ class EliminarObjetoView(DeleteView):
         return_url = self.kwargs['return_url']
         messages.success(self.request, f'{self.object} Fue eliminado con éxito')
         return reverse(return_url)
+
+#Galeria
+@login_required(login_url='bas:login')
+def albumesView(request):
+    albumes=AlbumGallery.objects.filter(estado=True)
+
+    contexto = {
+        'albumes': albumes,
+    }
+
+    return render(request, 'albumes.html', contexto)
+
+#Album detalle
+@login_required(login_url='bas:login')
+def album_detail(request, id):
+    imagenes = ImageGallery.objects.filter(album=id)
+
+    return render(request, 'album_detail.html', {'imagenes': imagenes})
