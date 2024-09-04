@@ -42,27 +42,6 @@ class AlbumGallery(ClaseModelo):
 
     def __str__(self):
         return self.nombre
-    
-    def save(self, *args, **kwargs):
-        # Si hay una imagen, redimensionarla
-        if self.imagen:
-            self.imagen = self.resize_image(self.imagen)
-        super().save(*args, **kwargs)
-
-    def resize_image(self, image):
-        # Abrir la imagen usando Pillow
-        img = Image.open(image)
-        img = img.convert('RGB')  # Asegurarse de que la imagen esté en formato RGB
-
-        # Redimensionar la imagen
-        img = img.resize((1100, 1100), Image.ANTIALIAS)
-
-        # Guardar la imagen en memoria
-        image_io = io.BytesIO()
-        img.save(image_io, format='JPEG', quality=90)  # Puedes cambiar el formato y la calidad según tus necesidades
-        image_file = InMemoryUploadedFile(image_io, 'ImageField', f"{self.nombre}.jpg", 'image/jpeg', image_io.getbuffer().nbytes, None)
-
-        return image_file
 
 # modelo de galeria
 class ImageGallery(ClaseModelo):
@@ -74,24 +53,3 @@ class ImageGallery(ClaseModelo):
 
     def __str__(self):
         return self.titulo
-
-    def save(self, *args, **kwargs):
-        # Si hay una imagen, redimensionarla
-        if self.imagen:
-            self.imagen = self.resize_image(self.imagen)
-        super().save(*args, **kwargs)
-
-    def resize_image(self, image):
-        # Abrir la imagen usando Pillow
-        img = Image.open(image)
-        img = img.convert('RGB')  # Asegurarse de que la imagen esté en formato RGB
-
-        # Redimensionar la imagen
-        img = img.resize((1100, 1100), Image.ANTIALIAS)
-
-        # Guardar la imagen en memoria
-        image_io = io.BytesIO()
-        img.save(image_io, format='JPEG', quality=90)  # Puedes cambiar el formato y la calidad según tus necesidades
-        image_file = InMemoryUploadedFile(image_io, 'ImageField', f"{self.titulo}.jpg", 'image/jpeg', image_io.getbuffer().nbytes, None)
-
-        return image_file

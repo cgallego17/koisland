@@ -8,11 +8,19 @@ from django.views.generic import UpdateView
 from django.http import Http404
 from .models import *
 from .forms import *
+from pro.models import Producto
 
 #Dashboard
 @login_required(login_url='bas:login')
 def home(request):
-    return render(request, 'inicio_admin.html')
+    cantidad_productos_activos = Producto.objects.filter(disponible=True).count()
+
+    contexto = {
+        'cantidad_productos_activos': cantidad_productos_activos,
+    }
+
+
+    return render(request, 'inicio_admin.html', contexto)
 
 #Editar Empresa
 @login_required(login_url='bas:login')

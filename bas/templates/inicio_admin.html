@@ -9,8 +9,8 @@
       <div class="col-lg-6">
         <div class="page-header-left">
           <h3>
-            {{ album.nombre }}
-            <small>{{ album.nombre }}</small>
+            DASHBOARD
+            <small>DASHBOARD</small>
           </h3>
         </div>
       </div>
@@ -27,19 +27,12 @@
               </svg>
             </a>
           </li>
-          <li class="breadcrumb-item">Album</li>
-          <li class="breadcrumb-item active">{{ album.nombre }}s</li>
+          <li class="breadcrumb-item active">Dashboard</li>
         </ol>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12 d-flex justify-content-end">
-      <a href="{% url 'bas:add_image' %}" class="btn btn-primary btn-sm mb-4">Añadir</a>
-    </div>
-  </div>
 </div>
-
 
 <div class="container-fluid">
   <div class="row">
@@ -85,8 +78,7 @@
             </div>
             <div class="media-body media-doller">
               <span class="m-0">Productos</span>
-              <h3 class="mb-0">$ <span class="counter">9856</span><small> This
-                  Month</small>
+              <h3 class="mb-0"><span class="counter">{{cantidad_productos_activos}}</span><small> Disponibles</small>
               </h3>
             </div>
           </div>
