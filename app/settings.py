@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'ven',
     'usr',
     'web',
+    'art',
     'bas.templatetags',
 ]
 

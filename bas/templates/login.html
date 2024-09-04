@@ -80,11 +80,14 @@
         <h2>Inicia sesión</h2>
         <input type="text" name="username" placeholder="Nombre de usuario" autofocus="" autocapitalize="none"
           autocomplete="username" maxlength="150" required id="id_username">
-        {{ form.username.errors }}
         <input type="password" name="password" autocomplete="current-password" required id="id_password"
           placeholder="Contraseña">
-        {{ form.password.errors }}
         <button type="submit">Iniciar sesión</button>
+        {% if form.non_field_errors %}
+          <div class="error">
+            {{ form.non_field_errors }}
+          </div>
+        {% endif %}
       </form>
     </div>
   </body>

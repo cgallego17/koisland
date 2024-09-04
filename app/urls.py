@@ -25,6 +25,7 @@ urlpatterns = [
     path('dash/',include(('bas.urls','bas'), namespace='bas')),
     path('usr/',include(('usr.urls','usr'), namespace='usr')),
     path('pro/',include(('pro.urls','pro'), namespace='pro')),
+    path('art/',include(('art.urls','art'), namespace='art')),
     path('admin/', admin.site.urls),
 
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),

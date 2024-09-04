@@ -9,7 +9,6 @@ from django.http import Http404
 from .models import *
 from .forms import *
 
-
 #Dashboard
 @login_required(login_url='bas:login')
 def home(request):

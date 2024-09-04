@@ -1,0 +1,71 @@
+{% extends 'base/index.html' %} {% load static %} {% block content %}
+<div class="container-fluid">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="page-header-left">
+          <h3>
+            Articulos
+            <small>Lista articulos</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <ol class="breadcrumb pull-right">
+          <li class="breadcrumb-item">
+            <a href="/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-home">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </a>
+          </li>
+          <li class="breadcrumb-item">Articulos</li>
+          <li class="breadcrumb-item active">Lista Articulos</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-end">
+      <a href="{% url 'art:crear_articulo' %}" class="btn btn-primary btn-sm mb-3">CREAR</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive table-desi">
+      <table class="table all-package">
+        <thead class="bg-secondary">
+          <tr>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for articulo in articulos %}
+          <tr>
+            <td>{{ articulo.titulo }}</td>
+            <td>{{ articulo.estadoArt }}</td>
+            <td>
+              <a href="{% url 'art:editar_articulo' articulo.id %}">
+                <i class="fa fa-edit" title="Edit"></i>
+              </a>
+              <a href="{% url 'art:eliminar_articulo' articulo.id %}">
+                <i class="fa fa-trash text-danger" title="Delete"></i>
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

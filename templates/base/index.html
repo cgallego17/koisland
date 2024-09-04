@@ -76,7 +76,7 @@
               </a>
             </li>
             <li class="onhover-dropdown">
-              <a class="text-dark" href="{% url 'web:inicio' %}"> 
+              <a class="text-dark" href="#"> 
               <i data-feather="home"></i>
               
             </li>
@@ -91,23 +91,8 @@
               </div>
               <ul class="profile-dropdown onhover-show-div p-20 profile-dropdown-hover">
                 <li>
-                  <a href="javascript:void(0)">
+                  <a href="{% url 'usr:editar_user' request.user.id %}"> 
                     <i data-feather="user"></i>Edit Profile
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">
-                    <i data-feather="mail"></i>Inbox
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">
-                    <i data-feather="lock"></i>Lock Screen
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">
-                    <i data-feather="settings"></i>Settings
                   </a>
                 </li>
                 <li>
@@ -230,10 +215,26 @@
             </li>
 
             <li>
-              <a class="sidebar-header" href="media.html">
-                <i data-feather="camera"></i>
-                <span>Articulos</span>
+              <a class="sidebar-header" href="javascript:void(0)">
+                <i data-feather="box"></i>
+                <span>Artículos</span>
+                <i class="fa fa-angle-right pull-right"></i>
               </a>
+
+              <ul class="sidebar-submenu">
+                <li> 
+                  <a href="{% url 'art:articulos' %}">
+                    <i class="fa fa-circle"></i>
+                    <span>Artículos</span>
+                  </a>
+                </li>
+                <li> 
+                  <a href="{% url 'art:categorias_articulos' %}">
+                    <i class="fa fa-circle"></i>
+                    <span>Categorías</span>
+                  </a>
+                </li>
+              </ul>
             </li>
 
             <li> 

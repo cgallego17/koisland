@@ -1,6 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.conf import settings
+from PIL import Image
+import io
+from django.core.files.uploadedfile import InMemoryUploadedFile
 
 # Clase Modelo.
 class ClaseModelo(models.Model):
@@ -15,7 +17,6 @@ class ClaseModelo(models.Model):
 
 #Empresa
 class Empresa(ClaseModelo):
-
     # Fields
     nombre = models.CharField(max_length=250)
     telefono = models.IntegerField(blank=True, null=True)
@@ -33,8 +34,7 @@ class Empresa(ClaseModelo):
     def __str__(self):
         return '{}'.format(self.nombre)
     
-
-# Create your models here.
+# modelo de album de galeria
 class AlbumGallery(ClaseModelo):
     nombre = models.CharField(max_length=100, verbose_name="Nombre del Álbum")
     descripcion = models.TextField(blank=True, null=True, verbose_name="Descripción")
@@ -42,12 +42,56 @@ class AlbumGallery(ClaseModelo):
 
     def __str__(self):
         return self.nombre
+    
+    def save(self, *args, **kwargs):
+        # Si hay una imagen, redimensionarla
+        if self.imagen:
+            self.imagen = self.resize_image(self.imagen)
+        super().save(*args, **kwargs)
 
+    def resize_image(self, image):
+        # Abrir la imagen usando Pillow
+        img = Image.open(image)
+        img = img.convert('RGB')  # Asegurarse de que la imagen esté en formato RGB
+
+        # Redimensionar la imagen
+        img = img.resize((1100, 1100), Image.ANTIALIAS)
+
+        # Guardar la imagen en memoria
+        image_io = io.BytesIO()
+        img.save(image_io, format='JPEG', quality=90)  # Puedes cambiar el formato y la calidad según tus necesidades
+        image_file = InMemoryUploadedFile(image_io, 'ImageField', f"{self.nombre}.jpg", 'image/jpeg', image_io.getbuffer().nbytes, None)
+
+        return image_file
+
+# modelo de galeria
 class ImageGallery(ClaseModelo):
     album = models.ForeignKey(AlbumGallery, related_name='imagenes', on_delete=models.CASCADE, verbose_name="Álbum")
     titulo = models.CharField(max_length=100, verbose_name="Título de la Imagen")
     imagen = models.ImageField(upload_to='imagenes/album/imagenes/', verbose_name="Imagen")
     descripcion = models.TextField(blank=True, null=True, verbose_name="Descripción")
+    iframe_code = models.TextField(blank=True, null=True, verbose_name="Código del Iframe del Video")
 
     def __str__(self):
-        return self.titulo    
+        return self.titulo
+
+    def save(self, *args, **kwargs):
+        # Si hay una imagen, redimensionarla
+        if self.imagen:
+            self.imagen = self.resize_image(self.imagen)
+        super().save(*args, **kwargs)
+
+    def resize_image(self, image):
+        # Abrir la imagen usando Pillow
+        img = Image.open(image)
+        img = img.convert('RGB')  # Asegurarse de que la imagen esté en formato RGB
+
+        # Redimensionar la imagen
+        img = img.resize((1100, 1100), Image.ANTIALIAS)
+
+        # Guardar la imagen en memoria
+        image_io = io.BytesIO()
+        img.save(image_io, format='JPEG', quality=90)  # Puedes cambiar el formato y la calidad según tus necesidades
+        image_file = InMemoryUploadedFile(image_io, 'ImageField', f"{self.titulo}.jpg", 'image/jpeg', image_io.getbuffer().nbytes, None)
+
+        return image_file
