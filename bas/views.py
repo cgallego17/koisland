@@ -12,7 +12,7 @@ from .forms import *
 #Dashboard
 @login_required(login_url='bas:login')
 def home(request):
-    return render(request, 'base/index.html')
+    return render(request, 'inicio_admin.html')
 
 #Editar Empresa
 @login_required(login_url='bas:login')

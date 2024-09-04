@@ -1,0 +1,221 @@
+{% extends 'base/index.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="page-header-left">
+          <h3>
+            {{ album.nombre }}
+            <small>{{ album.nombre }}</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <ol class="breadcrumb pull-right">
+          <li class="breadcrumb-item">
+            <a href="/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-home">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </a>
+          </li>
+          <li class="breadcrumb-item">Album</li>
+          <li class="breadcrumb-item active">{{ album.nombre }}s</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-end">
+      <a href="{% url 'bas:add_image' %}" class="btn btn-primary btn-sm mb-4">Añadir</a>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xxl-3 col-md-6 xl-50">
+      <div class="card o-hidden widget-cards">
+        <div class="warning-box card-body">
+          <div class="media static-top-widget align-items-center">
+            <div class="icons-widgets">
+              <div class="align-self-center text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-navigation font-warning">
+                  <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+                </svg>
+              </div>
+            </div>
+            <div class="media-body media-doller">
+              <span class="m-0">Ventas</span>
+              <h3 class="mb-0">$ <span class="counter">6659</span><small> This
+                  Month</small>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xxl-3 col-md-6 xl-50">
+      <div class="card o-hidden widget-cards">
+        <div class="secondary-box card-body">
+          <div class="media static-top-widget align-items-center">
+            <div class="icons-widgets">
+              <div class="align-self-center text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-box font-secondary">
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                  </path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+            <div class="media-body media-doller">
+              <span class="m-0">Productos</span>
+              <h3 class="mb-0">$ <span class="counter">9856</span><small> This
+                  Month</small>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xxl-3 col-md-6 xl-50">
+      <div class="card o-hidden widget-cards">
+        <div class="primary-box card-body">
+          <div class="media static-top-widget align-items-center">
+            <div class="icons-widgets">
+              <div class="align-self-center text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="feather feather-message-square font-primary">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg></div>
+            </div>
+            <div class="media-body media-doller"><span class="m-0">Messages</span>
+              <h3 class="mb-0">$ <span class="counter">893</span><small> This
+                  Month</small></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xxl-3 col-md-6 xl-50">
+      <div class="card o-hidden widget-cards">
+        <div class="danger-box card-body">
+          <div class="media static-top-widget align-items-center">
+            <div class="icons-widgets">
+              <div class="align-self-center text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="feather feather-users font-danger">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg></div>
+            </div>
+            <div class="media-body media-doller"><span class="m-0">Clientes</span>
+              <h3 class="mb-0"><span class="counter">5631</span></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 xl-100">
+      <div class="card">
+        <div class="card-header">
+          <h5>Últimas Ventas</h5>
+        </div>
+        <div class="card-body">
+          <div class="user-status table-responsive latest-order-table">
+            <table class="table table-bordernone">
+              <thead>
+                <tr>
+                  <th scope="col">Order ID</th>
+                  <th scope="col">Order Total</th>
+                  <th scope="col">Payment Method</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td class="digits">$120.00</td>
+                  <td class="font-danger">Bank Transfers</td>
+                  <td class="digits">On Way</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="code-box-copy">
+            <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head1" title=""
+              data-original-title="Copy"><i class="icofont icofont-copy-alt"></i></button>
+            <pre class="  language-html"><code class="  language-html" id="example-head1">
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>user-status table-responsive latest-order-table<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>table table-bordernone<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+              </code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 xl-100">
+      <div class="card height-equal" style="min-height: 518px;">
+        <div class="card-header">
+          <h5>Últimos Clientes</h5>
+        </div>
+        <div class="card-body">
+          <div class="user-status table-responsive products-table">
+            <table class="table table-bordernone mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">Details</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Simply dummy text of the printing</td>
+                  <td class="digits">1</td>
+                  <td class="font-primary">Pending</td>
+                  <td class="digits">$6523</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="code-box-copy">
+            <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head4" title=""
+              data-original-title="Copy"><i class="icofont icofont-copy-alt"></i></button>
+            <pre class="  language-html"><code class="  language-html" id="example-head4">
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>user-status table-responsive products-table<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>table table-bordernone mb-0<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+              </code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+{% endblock %}
