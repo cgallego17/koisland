@@ -1,103 +1,1593 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio Koisland</title>
-  <style>
-    /* Estilos para la modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgb(0, 0, 0);
-      background-color: rgba(0, 0, 0, 0.4);
-      padding-top: 60px;
+  <meta charset="UTF-8" />
+  <meta name="description" content="description" />
+  <meta name="keywords" content="keywords" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Koisland Store</title>
+  <!-- styles-->
+  <link rel="stylesheet" href="{% static 'web/css/styles.min.css' %}" /> 
+  <!-- web-font loader-->
+  <script>
+    WebFontConfig = {
+      google: {
+        families: [
+          "Nunito+Sans:300,400,500,700,900",
+          "Quicksand:300,400,500,700",
+        ],
+      },
+    };
+
+    function font() {
+      var wf = document.createElement("script");
+
+      wf.src =
+        ("https:" == document.location.protocol ? "https" : "http") +
+        "://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js";
+      wf.type = "text/javascript";
+      wf.async = "true";
+
+      var s = document.getElementsByTagName("script")[0];
+
+      s.parentNode.insertBefore(wf, s);
     }
 
-    .modal-content {
-      background-color: #fefefe;
-      margin: 5% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-      max-width: 400px;
-      border-radius: 10px;
-    }
-
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    /* Estilos para el formulario de login */
-    .modal form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .modal form input {
-      margin-bottom: 15px;
-      padding: 10px;
-      font-size: 16px;
-    }
-
-    .modal form button {
-      padding: 10px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .modal form button:hover {
-      background-color: #45a049;
-    }
-  </style>
+    font();
+  </script>
 </head>
 
 <body>
-  <h1>Inicio Koisland</h1>
+  <div class="page-wrapper">
+    <!-- menu dropdown start-->
+    <div class="menu-dropdown menu-dropdown--front-2">
+      <div class="menu-dropdown__inner" data-value="start">
+        <div class="screen screen--start">
+          <div class="screen__item screen--trigger item--active" data-category="home">
+            <span>Inicio</span><span>
+              <svg class="icon">
+                <use xlink:href="#chevron"></use>
+              </svg></span>
+          </div>
+          <div class="screen__item screen--trigger" data-category="pages">
+            <span>Pages</span><span>
+              <svg class="icon">
+                <use xlink:href="#chevron"></use>
+              </svg></span>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="blog.html">Blog</a>
+          </div>
+          <div class="screen__item screen--trigger" data-category="shop">
+            <span>Shop</span><span>
+              <svg class="icon">
+                <use xlink:href="#chevron"></use>
+              </svg></span>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="contacts.html">Contacts</a>
+          </div>
+          <div class="screen__item screen--trigger" data-category="elements">
+            <span>Elements</span><span>
+              <svg class="icon">
+                <use xlink:href="#chevron"></use>
+              </svg></span>
+          </div>
+          <div class="screen__item screen--trigger" data-category="language">
+            <span>Language</span><span>
+              <svg class="icon">
+                <use xlink:href="#chevron"></use>
+              </svg></span>
+          </div>
+          <ul class="screen__socials">
+            <li>
+              <a class="item--facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <a class="item--twitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <a class="item--youtube" href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <a class="item--instagram" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            </li>
+          </ul>
+          <a class="screen__button" href="#">Tickets</a>
+        </div>
+      </div>
+      <div class="menu-dropdown__inner" data-value="home">
+        <div class="screen screen--sub">
+          <div class="screen__heading">
+            <h6 class="screen__back">
+              <svg class="icon">
+                <use xlink:href="#chevron-left"></use>
+              </svg>
+              <span>Home</span>
+            </h6>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="index.html">Home Zoo</a>
+          </div>
+          <div class="screen__item item--active">
+            <a class="screen__link" href="front_2.html">Home Aquarium</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="front_3.html">Home Terrarium</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="front_4.html">Home Protections</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="front_5.html">Home Safari</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="front_6.html">Home Shop</a>
+          </div>
+        </div>
+      </div>
+      <div class="menu-dropdown__inner" data-value="pages">
+        <div class="screen screen--sub">
+          <div class="screen__heading">
+            <h6 class="screen__back">
+              <svg class="icon">
+                <use xlink:href="#chevron-left"></use>
+              </svg>
+              <span>Pages</span>
+            </h6>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="about.html">About</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="services.html">Services</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="blog-details.html">Blog Details</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="gallery.html">Gallery</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="gallery_2.html">Gallery v.2</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="calendar.html">Calendar</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="membership.html">Membership</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="events.html">Events</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="event-details.html">Event Details</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="tickets.html">Tickets</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="foundation.html">Foundation</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="education.html">Education</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="donation.html">Donation</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="donation-details.html">Donation Details</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="animals.html">Animals</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="animal-details.html">Animal Details</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="safari-tours.html">Safari Tours</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="tour-details.html">Tour Details</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="typography.html">Typography</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="faq.html">Faq</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="map.html">Map</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="404.html">404</a>
+          </div>
+        </div>
+      </div>
+      <div class="menu-dropdown__inner" data-value="shop">
+        <div class="screen screen--sub">
+          <div class="screen__heading">
+            <h6 class="screen__back">
+              <svg class="icon">
+                <use xlink:href="#chevron-left"></use>
+              </svg>
+              <span>Shop</span>
+            </h6>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="shop-catalog.html">Shop Catalog</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="shop-product.html">Shop Product</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="shop-cart.html">Shop Cart</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="shop-checkout.html">Shop Checkout</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="shop-account.html">Shop Account</a>
+          </div>
+        </div>
+      </div>
+      <div class="menu-dropdown__inner" data-value="elements">
+        <div class="screen screen--sub">
+          <div class="screen__heading">
+            <h6 class="screen__back">
+              <svg class="icon">
+                <use xlink:href="#chevron-left"></use>
+              </svg>
+              <span>Elements</span>
+            </h6>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="accordion.html">Accordion</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="alerts.html">Alerts</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="breadcrumbs.html">Breadcrumbs</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="buttons.html">Buttons</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="charts.html">Charts</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="counters.html">Counters</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="forms.html">Forms</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="icon-list.html">Icon List</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="logos.html">Logos</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="paginations.html">Paginations</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="pricing-tables.html">Pricing Tables</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="tabs.html">Tabs</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="team.html">Tean</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="testimonials.html">Testimonials</a>
+          </div>
+        </div>
+      </div>
+      <div class="menu-dropdown__inner" data-value="language">
+        <div class="screen screen--sub">
+          <div class="screen__heading">
+            <h6 class="screen__back">
+              <svg class="icon">
+                <use xlink:href="#chevron-left"></use>
+              </svg>
+              <span>Language</span>
+            </h6>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="javascript:void(0);">English</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="javascript:void(0);">French</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="javascript:void(0);">Spanish</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="javascript:void(0);">Deutsch</a>
+          </div>
+          <div class="screen__item">
+            <a class="screen__link" href="javascript:void(0);">Russian</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- menu dropdown end-->
+    <!-- header start-->
+    <header class="header shop-header header-f2">
+      <div class="header__lower">
+        <div class="row">
+          <div class="col-12 d-flex align-items-center justify-content-between">
+            <div class="header__lower-inner">
+              <div class="header__phones">
+                Phone: <a href="tel:+31859644725">+31 85 964 47 25</a>
+                <a href="tel:+31657926311">+31 65 792 63 11</a>
+              </div>
+            </div>
+            <div class="header__lower-inner">
+              <ul class="lower-menu">
+                <li class="lower-menu__item">
+                  <a class="lower-menu__link" href="#">Membership</a>
+                </li>
+                <li class="lower-menu__item">
+                  <a class="lower-menu__link" href="#">Education</a>
+                </li>
+                <li class="lower-menu__item">
+                  <a class="lower-menu__link" href="#">Map Zoo</a>
+                </li>
+                <li class="lower-menu__item">
+                  <a class="lower-menu__link" href="#">Events</a>
+                </li>
+                <li class="lower-menu__item">
+                  <a class="lower-menu__link" href="#">Donate</a>
+                </li>
+                <li class="lower-menu__item">
+                  <a class="lower-menu__link" href="#">Foundation</a>
+                </li>
+              </ul>
+              <!-- lang select start-->
+              <ul class="lang-select">
+                <li class="lang-select__item lang-select__item--active">
+                  <span>English</span>
+                  <ul class="lang-select__sub-list">
+                    <li><a href="#">French</a></li>
+                    <li><a href="#">Spanish</a></li>
+                    <li><a href="#">Deutsch</a></li>
+                    <li><a href="#">Russian</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <!-- lang select end-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header__top">
+        <div class="row align-items-center">
+          <div class="col-8 col-lg-3">
+            <a class="logo" href="index.html"><img class="logo--white logo__img" src="{% static 'web/img/logo_aquarium.png' %}"
+                alt="logo" /><img class="logo--dark logo__img" src="{% static 'web/img/logo_aquarium_black.png' %}" alt="logo" /></a>
+          </div>
+          <div class="col-4 col-lg-9 d-flex justify-content-end align-items-center">
+            <!-- main menu start-->
+            <ul class="main-menu">
+              <li class="main-menu__item main-menu__item--has-child main-menu__item--active">
+                <a class="main-menu__link" href="javascript:void(0);"><span>Home</span></a>
+                <!-- sub menu start-->
+                <ul class="main-menu__sub-list">
+                  <li>
+                    <a href="index.html"><span>Home Zoo</span></a>
+                  </li>
+                  <li class="item--active">
+                    <a href="front_2.html"> <span>Home Aquarium</span></a>
+                  </li>
+                  <li>
+                    <a href="front_3.html"><span>Home Terrarium</span></a>
+                  </li>
+                  <li>
+                    <a href="front_4.html"><span>Home Animal Protections</span></a>
+                  </li>
+                  <li>
+                    <a href="front_5.html"><span>Home Safari</span></a>
+                  </li>
+                  <li>
+                    <a href="front_6.html"><span>Home Shop</span></a>
+                  </li>
+                </ul>
+                <!-- sub menu end-->
+              </li>
+              <li class="main-menu__item main-menu__item--has-child">
+                <a class="main-menu__link" href="javascript:void(0);"><span>Pages</span></a>
+                <!-- sub menu start-->
+                <ul class="main-menu__sub-list sub-list--style-2">
+                  <li>
+                    <a href="about.html"><span>About</span></a>
+                  </li>
+                  <li>
+                    <a href="services.html"><span>Services</span></a>
+                  </li>
+                  <li>
+                    <a href="blog-details.html"><span>Blog Details</span></a>
+                  </li>
+                  <li>
+                    <a href="gallery.html"><span>Gallery</span></a>
+                  </li>
+                  <li>
+                    <a href="gallery_2.html"><span>Gallery v.2</span></a>
+                  </li>
+                  <li>
+                    <a href="calendar.html"><span>Calendar</span></a>
+                  </li>
+                  <li>
+                    <a href="membership.html"><span>Membership</span></a>
+                  </li>
+                  <li>
+                    <a href="events.html"><span>Events</span></a>
+                  </li>
+                  <li>
+                    <a href="event-details.html"><span>Event Details</span></a>
+                  </li>
+                  <li>
+                    <a href="tickets.html"><span>Tickets</span></a>
+                  </li>
+                  <li>
+                    <a href="foundation.html"><span>Foundation</span></a>
+                  </li>
+                  <li>
+                    <a href="education.html"><span>Education</span></a>
+                  </li>
+                  <li>
+                    <a href="donation.html"><span>Donation</span></a>
+                  </li>
+                  <li>
+                    <a href="donation-details.html"><span>Donation Details</span></a>
+                  </li>
+                  <li>
+                    <a href="animals.html"> <span>Animals</span></a>
+                  </li>
+                  <li>
+                    <a href="animal-details.html">
+                      <span>Animal Details</span></a>
+                  </li>
+                  <li>
+                    <a href="safari-tours.html"> <span>Safari Tours</span></a>
+                  </li>
+                  <li>
+                    <a href="tour-details.html"> <span>Tour Details</span></a>
+                  </li>
+                  <li>
+                    <a href="typography.html"> <span>Typography</span></a>
+                  </li>
+                  <li>
+                    <a href="faq.html"><span>FAQ</span></a>
+                  </li>
+                  <li>
+                    <a href="map.html"><span>Map</span></a>
+                  </li>
+                  <li>
+                    <a href="404.html"><span>404 Page</span></a>
+                  </li>
+                </ul>
+                <!-- sub menu end-->
+              </li>
+              <li class="main-menu__item">
+                <a class="main-menu__link" href="blog.html"><span>Blog</span></a>
+              </li>
+              <li class="main-menu__item main-menu__item--has-child">
+                <a class="main-menu__link" href="javascript:void(0);"><span>Shop</span></a>
+                <!-- sub menu start-->
+                <ul class="main-menu__sub-list">
+                  <li>
+                    <a href="shop-catalog.html"><span>Shop Catalog</span></a>
+                  </li>
+                  <li>
+                    <a href="shop-product.html"><span>Shop Product</span></a>
+                  </li>
+                  <li>
+                    <a href="shop-cart.html"><span>Shop Cart</span></a>
+                  </li>
+                  <li>
+                    <a href="shop-checkout.html"><span>Shop Checkout</span></a>
+                  </li>
+                  <li>
+                    <a href="shop-account.html"><span>Shop Account</span></a>
+                  </li>
+                </ul>
+                <!-- sub menu end-->
+              </li>
+              <li class="main-menu__item">
+                <a class="main-menu__link" href="contacts.html"><span>Contacts</span></a>
+              </li>
+              <li class="main-menu__item main-menu__item--has-child">
+                <a class="main-menu__link" href="javascript:void(0);"><span>Elements</span></a>
+                <!-- sub menu start-->
+                <ul class="main-menu__sub-list sub-list--style-2">
+                  <li>
+                    <a href="accordion.html"><span>Accordion</span></a>
+                  </li>
+                  <li>
+                    <a href="charts.html"><span>Charts</span></a>
+                  </li>
+                  <li>
+                    <a href="alerts.html"><span>Alerts</span></a>
+                  </li>
+                  <li>
+                    <a href="counters.html"><span>Counters</span></a>
+                  </li>
+                  <li>
+                    <a href="logos.html"><span>Logos</span></a>
+                  </li>
+                  <li>
+                    <a href="forms.html"><span>Forms</span></a>
+                  </li>
+                  <li>
+                    <a href="tabs.html"><span>Tabs</span></a>
+                  </li>
+                  <li>
+                    <a href="buttons.html"><span>Buttons</span></a>
+                  </li>
+                  <li>
+                    <a href="paginations.html"><span>Paginations</span></a>
+                  </li>
+                  <li>
+                    <a href="team.html"><span>Team</span></a>
+                  </li>
+                  <li>
+                    <a href="breadcrumbs.html"><span>Bread Crumbs</span></a>
+                  </li>
+                  <li>
+                    <a href="icon-list.html"><span>Icon List</span></a>
+                  </li>
+                  <li>
+                    <a href="pricing-tables.html"><span>Pricing Tables</span></a>
+                  </li>
+                  <li>
+                    <a href="testimonials.html"><span>Testimonials</span></a>
+                  </li>
+                </ul>
+                <!-- sub menu end-->
+              </li>
+            </ul>
+            <!-- main menu end--><a class="header__button" href="#">Tickets</a>
+            <!-- menu-trigger start-->
+            <div class="hamburger">
+              <div class="hamburger-box">
+                <div class="hamburger-inner"></div>
+              </div>
+            </div>
+            <!-- menu-trigger end-->
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- header end-->
+    <main class="main">
+      <!-- promo start-->
+      <section class="promo promo--front-2">
+        <div class="promo-slider promo-slider--style-2">
+          <div class="promo-slider__item promo-slider__item--style-2">
+            <picture>
+              <source src="https://koisland.com/image/catalog/banners/koisland_video_web4_x264_30fts.mp4" type="video/mp4" media="(min-width: 992px)" />
+              <video class="img--bg" autoplay muted loop playsinline>
+                <source src="https://koisland.com/image/catalog/banners/koisland_video_web4_x264_30fts.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </picture>
+            <div class="container">
+              <div class="row">
+                <div class="col-xl-10 offset-xl-1 text-center">
+                  <div class="align-container">
+                    <div class="align-container__item">
+                      <div class="promo-slider__wrapper-1">
+                        <h2 class="promo-slider__title">
+                          <span>Amazing</span><br /><span>Underwater World</span>
+                        </h2>
+                      </div>
+                      <div class="promo-slider__wrapper-2">
+                        <p class="promo-slider__subtitle">
+                          Animals World accreditation standards. Members are
+                          proactive in both undertaking and applying animal
+                          welfare scientific research, contributing to EAZA
+                          being a recognised organisation in animal welfare
+                          best-practice.
+                        </p>
+                      </div>
+                      <div class="promo-slider__wrapper-3">
+                        <a class="button promo-slider__button button--primary button--cyan" href="#">Discover</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="promo-slider__item promo-slider__item--style-2">
+            <picture>
+              <source srcset="{% static 'web/img/promo_2f2.jpg' %}" media="(min-width: 992px)" />
+              <img class="img--bg" src="{% static 'web/img/promo_2f2.jpg' %}" alt="img" />
+            </picture>
+            <div class="container">
+              <div class="row">
+                <div class="col-xl-7">
+                  <div class="align-container">
+                    <div class="align-container__item">
+                      <div class="promo-slider__wrapper-1">
+                        <h2 class="promo-slider__title">
+                          <span>Awesome</span><br />
+                          <span>Colorful Corals</span>
+                        </h2>
+                      </div>
+                      <div class="promo-slider__wrapper-2">
+                        <p class="promo-slider__subtitle">
+                          Animals World accreditation standards. Members are
+                          proactive in both undertaking and applying animal
+                          welfare scientific research, contributing to EAZA
+                          being a recognised
+                        </p>
+                      </div>
+                      <div class="promo-slider__wrapper-3">
+                        <a class="button promo-slider__button button--primary button--cyan" href="#">Discover</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="promo-slider__item promo-slider__item--style-3">
+            <picture>
+              <source srcset="{% static 'web/img/promo_3f2.jpg' %}" media="(min-width: 992px)" />
+              <img class="img--bg" src="{% static 'web/img/promo_3f2.jpg' %}" alt="img" />
+            </picture>
+            <div class="container">
+              <div class="row">
+                <div class="col-xl-8 offset-xl-2">
+                  <div class="align-container">
+                    <div class="align-container__item"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- promo pannel start-->
+        <div class="promo-pannel">
+          
+          <div class="promo-pannel__details">
+            <span class="promo-pannel__subject">Events</span>
+            <div class="row align-items-end">
+              <div class="col-xl-6">
+                <span class="promo-pannel__count color--cyan">01</span>
+                <h6 class="promo-pannel__title color--primary">
+                  <a href="#">Fishes Dancing</a>
+                </h6>
+                <p class="promo-pannel__date">01 Nov 2020</p>
+              </div>
+              <div class="col-xl-6">
+                <span class="promo-pannel__count color--cyan">02</span>
+                <h6 class="promo-pannel__title color--primary">
+                  <a href="#">Aquarium Photosession</a>
+                </h6>
+                <p class="promo-pannel__date">02 Nov 2020</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="promo-slider__nav-holder">
+          <div class="promo-slider__nav dots--style-3"></div>
+          <div class="promo-slider__count"></div>
+        </div>
+        <!-- promo pannel end-->
+        <ul class="promo__socials">
+          <li>
+            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          </li>
+        </ul>
+      </section>
+      <!-- promo end-->
+      <!-- section start-->
+      <section class="section about-aquarium no-padding-bottom">
+        <div class="container">
+          <div class="row bottom-70">
+            <div class="col-lg-4">
+              <div class="heading heading--style-2 heading--cyan bottom-30">
+                <span class="heading__pre-title">About aquarium</span>
+                <h2 class="heading__title no-margin-bottom">
+                  <span>Awesome</span><br />
+                  <span>aquarium</span>
+                </h2>
+              </div>
+              <a class="button button--cyan d-none d-lg-inline-block" href="#">More about</a>
+            </div>
+            <div class="col-lg-8">
+              <p>
+                <strong>Ghost pipefish yellow bass New Zealand sand diver eulachon
+                  brook lamprey driftfish, Atlantic trout. Mudfish: blue eye,
+                  arrowtooth eel french angelfish yellowfin pike unicorn
+                  fish.</strong>
+              </p>
+              <p class="no-margin-bottom">
+                Rudderfish long-finned pikerazorfish menhaden paradise fish,
+                barramundi oceanic flyingfish. Fangtooth yellowtail banded
+                killifish seamoth triplefin blenny desert pupfish crocodile
+                shark catfish cutlassfish broadband dogfish whalefish. Ghost
+                pipefish yellow bass New Zealand sand diver eulachon brook
+                lamprey driftfish, Atlantic trout. Mudfish: blue eye,
+                arrowtooth eel french angelfish yellowfin pike unicorn fish.
+                Rudderfish long-finned pikerazorfish menhaden paradise fish,
+                barramundi oceanic flyingfish. Fangtooth yellowtail banded
+                killifish seamoth triplefin blenny deserRudderfish long-finned
+                pikerazorfish menhaden paradise fish, barramundi oceanic
+                flyingfish.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="about-aquarium__img">
+                <img class="img--bg" src="{% static 'web/img/about-aquarium.jpg' %}" alt="img" />
+              </div>
+            </div>
+          </div>
+          <div class="row top-50 d-flex d-lg-none">
+            <div class="col-12 text-center">
+              <a class="button button--cyan" href="#">Read more</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- section end-->
+      <!-- section start-->
+      <section class="section no-padding-bottom">
+        <div class="container">
+          <div class="row bottom-70">
+            <div class="col-xl-4">
+              <div class="heading heading--style-2 heading--cyan bottom-30 bottom-lg-none">
+                <span class="heading__pre-title">Our fishes</span>
+                <h2 class="heading__title no-margin-bottom">
+                  <span>Awesome fishes</span><br />
+                  <span>in our aquariums</span>
+                </h2>
+              </div>
+            </div>
+            <div class="col-xl-8">
+              <p class="no-margin-bottom">
+                Zebra oto pikeperch yellow jack nibbler ronquil duckbill round
+                stingray greenling eulachon: rough scad ray, driftfish bobtail
+                snipe eel anchovy stingray grunt sculpin. Soldierfish flounder
+                bleak gouramie algae eater flying gurnard
+              </p>
+            </div>
+          </div>
+          <div class="row offset-margin">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <div class="icon-item text-center">
+                <div class="icon-item__img">
+                  <img src="img/9.svg" alt="icon" />
+                </div>
+                <h6 class="icon-item__title no-margin-bottom">Tunas</h6>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <div class="icon-item text-center">
+                <div class="icon-item__img">
+                  <img src="img/10.svg" alt="icon" />
+                </div>
+                <h6 class="icon-item__title no-margin-bottom">Sharks</h6>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <div class="icon-item text-center">
+                <div class="icon-item__img">
+                  <img src="img/11.svg" alt="icon" />
+                </div>
+                <h6 class="icon-item__title no-margin-bottom">Dolphins</h6>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <div class="icon-item text-center">
+                <div class="icon-item__img">
+                  <img src="img/12.svg" alt="icon" />
+                </div>
+                <h6 class="icon-item__title no-margin-bottom">Whales</h6>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <div class="icon-item text-center">
+                <div class="icon-item__img">
+                  <img src="img/13.svg" alt="icon" />
+                </div>
+                <h6 class="icon-item__title no-margin-bottom">Tunas</h6>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <div class="icon-item text-center">
+                <div class="icon-item__img">
+                  <img src="img/14.svg" alt="icon" />
+                </div>
+                <h6 class="icon-item__title no-margin-bottom">Flounders</h6>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <div class="icon-item text-center">
+                <div class="icon-item__img">
+                  <img src="img/15.svg" alt="icon" />
+                </div>
+                <h6 class="icon-item__title no-margin-bottom">
+                  Deep-water angler
+                </h6>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <div class="icon-item text-center">
+                <div class="icon-item__img">
+                  <img src="img/16.svg" alt="icon" />
+                </div>
+                <h6 class="icon-item__title no-margin-bottom">Starfishes</h6>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <div class="icon-item text-center">
+                <div class="icon-item__img">
+                  <img src="img/17.svg" alt="icon" />
+                </div>
+                <h6 class="icon-item__title no-margin-bottom">Sea Urchins</h6>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <div class="icon-item text-center">
+                <div class="icon-item__img">
+                  <img src="img/18.svg" alt="icon" />
+                </div>
+                <h6 class="icon-item__title no-margin-bottom">Crabs</h6>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <div class="icon-item text-center">
+                <div class="icon-item__img">
+                  <img src="img/19.svg" alt="icon" />
+                </div>
+                <h6 class="icon-item__title no-margin-bottom">Octopuses</h6>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <div class="icon-item text-center">
+                <div class="icon-item__img">
+                  <img src="img/20.svg" alt="icon" />
+                </div>
+                <h6 class="icon-item__title no-margin-bottom">Perches</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- section end-->
+      <!-- section start-->
+      <section class="section no-padding-bottom">
+        <div class="container">
+          <div class="row bottom-50 align-items-end">
+            <div class="col-xl-6">
+              <div class="heading heading--style-2 heading--cyan">
+                <span class="heading__pre-title">Fishes</span>
+                <h2 class="heading__title no-margin-bottom">
+                  <span>Fishes</span> <span>type</span>
+                </h2>
+              </div>
+            </div>
+            <div class="col-xl-6 d-none d-xl-block">
+              <div class="row offset-30">
+                <div class="col-md-4 text-left">
+                  <div class="counter-item counter-item--front-2">
+                    <div class="counter-item__top">
+                      <h6 class="counter-item__title">Fishes Types</h6>
+                    </div>
+                    <div class="counter-item__lower">
+                      <span class="js-counter color--cyan">850</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 text-left">
+                  <div class="counter-item counter-item--front-2">
+                    <div class="counter-item__top">
+                      <h6 class="counter-item__title">Species</h6>
+                    </div>
+                    <div class="counter-item__lower">
+                      <span class="js-counter color--cyan">230</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 text-left">
+                  <div class="counter-item counter-item--front-2">
+                    <div class="counter-item__top">
+                      <h6 class="counter-item__title">Visitors per Year</h6>
+                    </div>
+                    <div class="counter-item__lower">
+                      <span class="js-counter color--cyan">160.000</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row no-gutters left-3 right-3">
+            <div class="col-md-6 col-xl-3">
+              <div class="text-box margin-3">
+                <img class="img--bg" src="{% static 'web/img/text-box_1.jpg' %}" alt="img" />
+                <div class="text-box__details">
+                  <span class="text-box__count">01</span>
+                  <h6 class="text-box__title">Colorful Fishes</h6>
+                  <div class="text-box__text">
+                    Fangtooth yellowtail banded killifish seamoth triplefin
+                    blenny
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <div class="text-box margin-3">
+                <img class="img--bg" src="{% static 'web/img/text-box_2.jpg' %}" alt="img" />
+                <div class="text-box__details">
+                  <span class="text-box__count">02</span>
+                  <h6 class="text-box__title">Colorful Fishes</h6>
+                  <div class="text-box__text">
+                    Fangtooth yellowtail banded killifish seamoth triplefin
+                    blenny fangtooth yellowtail banded killifish seamoth
+                    triplefin blenny
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <div class="text-box margin-3">
+                <img class="img--bg" src="{% static 'web/img/text-box_3.jpg' %}" alt="img" />
+                <div class="text-box__details">
+                  <span class="text-box__count">03</span>
+                  <h6 class="text-box__title">Colorful Fishes</h6>
+                  <div class="text-box__text">
+                    Fangtooth yellowtail banded killifish seamoth triplefin
+                    blenny
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <div class="text-box margin-3">
+                <img class="img--bg" src="{% static 'web/img/text-box_4.jpg' %}" alt="img" />
+                <div class="text-box__details">
+                  <span class="text-box__count">04</span>
+                  <h6 class="text-box__title">Colorful Fishes</h6>
+                  <div class="text-box__text">
+                    Fangtooth yellowtail banded killifish seamoth triplefin
+                    blenny fangtooth yellowtail banded killifish seamoth
+                    triplefin blenny
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- section end-->
+      <!-- gallery start-->
+      <section class="section gallery no-padding-bottom">
+        <div class="container">
+          <div class="row bottom-50 align-items-end">
+            <div class="col-lg-5 col-xl-6">
+              <div class="heading heading--style-2 heading--cyan">
+                <span class="heading__pre-title">Our gallery</span>
+                <h2 class="heading__title no-margin-bottom">
+                  <span>Gallery</span> <br />
+                  <span>of aquarium</span>
+                </h2>
+              </div>
+            </div>
+            <div class="col-lg-7 col-xl-6 text-right d-none d-lg-block">
+              <!-- filter panel start-->
+              <ul class="filter-panel filter-panel--style-3 justify-content-end">
+                <li class="filter-panel__item filter-panel__item--active" data-filter="*">
+                  <span>All</span>
+                </li>
+                <li class="filter-panel__item" data-filter=".category_2">
+                  <span>Jellyfish</span>
+                </li>
+                <li class="filter-panel__item" data-filter=".category_3">
+                  <span>Cephalopod</span>
+                </li>
+                <li class="filter-panel__item" data-filter=".category_4">
+                  <span>Fish</span>
+                </li>
+                <li class="filter-panel__item" data-filter=".category_5">
+                  <span>Reptiles</span>
+                </li>
+                <li class="filter-panel__item" data-filter=".category_6">
+                  <span>Corals</span>
+                </li>
+              </ul>
+              <!-- filter panel end-->
+            </div>
+          </div>
+        </div>
+        <div class="row gallery-masonry no-gutters">
+          <div class="category_1 col-sm-6 col-lg-4 col-xl-3 gallery-masonry__item gallery-masonry__item--cyan">
+            <a class="gallery-masonry__img gallery-masonry__item--height-1" href="img/gallery_25.jpg"
+              data-fancybox="gallery"><img class="img--bg" src="{% static 'web/img/gallery_25.jpg' %}" alt="img" />
+              <div class="gallery-masonry__description">
+                <span>Marine mammals</span><span>Dolphins</span>
+              </div>
+            </a>
+          </div>
+          <div class="category_1 col-sm-6 col-lg-4 col-xl-3 gallery-masonry__item gallery-masonry__item--cyan">
+            <a class="gallery-masonry__img gallery-masonry__item--height-1" href="{% static 'web/img/gallery_26.jpg' %}"
+              data-fancybox="gallery"><img class="img--bg" src="{% static 'web/img/gallery_26.jpg' %}" alt="img" />
+              <div class="gallery-masonry__description">
+                <span>Cephalopod</span><span>Octopus</span>
+              </div>
+            </a>
+          </div>
+          <div class="category_1 col-sm-6 col-lg-4 col-xl-3 gallery-masonry__item gallery-masonry__item--cyan">
+            <a class="gallery-masonry__img gallery-masonry__item--height-1" href="img/gallery_27.jpg"
+              data-fancybox="gallery"><img class="img--bg" src="img/gallery_27.jpg" alt="img" />
+              <div class="gallery-masonry__description">
+                <span>Fish</span><span>Salt Fish</span>
+              </div>
+            </a>
+          </div>
+          <div class="category_2 col-sm-6 col-lg-4 col-xl-3 gallery-masonry__item gallery-masonry__item--cyan">
+            <a class="gallery-masonry__img gallery-masonry__item--height-1" href="img/gallery_28.jpg"
+              data-fancybox="gallery"><img class="img--bg" src="img/gallery_28.jpg" alt="img" />
+              <div class="gallery-masonry__description">
+                <span>Reptiles</span><span>Leopard tortoise</span>
+              </div>
+            </a>
+          </div>
+          <div class="category_2 col-sm-6 col-lg-4 col-xl-3 gallery-masonry__item gallery-masonry__item--cyan">
+            <a class="gallery-masonry__img gallery-masonry__item--height-1" href="img/gallery_29.jpg"
+              data-fancybox="gallery"><img class="img--bg" src="img/gallery_29.jpg" alt="img" />
+              <div class="gallery-masonry__description">
+                <span>Corals</span><span>White Coral</span>
+              </div>
+            </a>
+          </div>
+          <div class="category_2 col-sm-6 col-lg-4 col-xl-3 gallery-masonry__item gallery-masonry__item--cyan">
+            <a class="gallery-masonry__img gallery-masonry__item--height-1" href="img/gallery_30.jpg"
+              data-fancybox="gallery"><img class="img--bg" src="img/gallery_30.jpg" alt="img" />
+              <div class="gallery-masonry__description">
+                <span>Fish</span><span>Batoidea</span>
+              </div>
+            </a>
+          </div>
+          <div class="category_3 col-sm-6 col-lg-4 col-xl-3 gallery-masonry__item gallery-masonry__item--cyan">
+            <a class="gallery-masonry__img gallery-masonry__item--height-1" href="img/gallery_31.jpg"
+              data-fancybox="gallery"><img class="img--bg" src="img/gallery_31.jpg" alt="img" />
+              <div class="gallery-masonry__description">
+                <span>Jellyfish</span><span>Mastigias papua</span>
+              </div>
+            </a>
+          </div>
+          <div class="category_3 col-sm-6 col-lg-4 col-xl-3 gallery-masonry__item gallery-masonry__item--cyan">
+            <a class="gallery-masonry__img gallery-masonry__item--height-1" href="img/gallery_32.jpg"
+              data-fancybox="gallery"><img class="img--bg" src="img/gallery_32.jpg" alt="img" />
+              <div class="gallery-masonry__description">
+                <span>Marine mammals</span><span>Orca</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="container d-block d-md-none top-50 padding-bottom-70">
+          <div class="row">
+            <div class="col-12 text-center">
+              <a class="button button--cyan" href="#">All Animals</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- gallery end-->
+      <!-- section start-->
+      <section class="section background--gray">
+        <img class="img--aside t50 l0" src="img/price-aside-bg.png" alt="img" /><img class="section__bg--fill"
+          src="img/price-bg.png" alt="img" />
+        <div class="container">
+          <div class="row bottom-50 justify-content-end">
+            <div class="col-xl-9">
+              <div class="heading heading--style-2 heading--cyan">
+                <span class="heading__pre-title">Price</span>
+                <h2 class="heading__title no-margin-bottom">
+                  <span># Buy</span> <span>online tickets</span>
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-lg-end">
+            <div class="col-sm-6 col-md-4 col-xl-3">
+              <div class="pricing-item pricing-item--white pricing-item--style-1 text-center">
+                <div class="pricing-item__top">
+                  <div class="pricing-item__icon">
+                    <svg class="icon">
+                      <use xlink:href="#adult"></use>
+                    </svg>
+                  </div>
+                  <div class="pricing-item__subject">Adult (12+ yrs)</div>
+                  <div class="pricing-item__price">
+                    <span>$</span><span class="color--cyan">25.00</span>
+                  </div>
+                </div>
+                <div class="pricing-item__lower">
+                  <a class="pricing-item__button button button--cyan" href="#">Buy tickets</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-xl-3">
+              <div class="pricing-item pricing-item--white pricing-item--style-1 text-center">
+                <div class="pricing-item__top">
+                  <div class="pricing-item__icon">
+                    <svg class="icon">
+                      <use xlink:href="#child"></use>
+                    </svg>
+                  </div>
+                  <div class="pricing-item__subject">Child (4-12 yrs)</div>
+                  <div class="pricing-item__price">
+                    <span>$</span><span class="color--cyan">15.00</span>
+                  </div>
+                </div>
+                <div class="pricing-item__lower">
+                  <a class="pricing-item__button button button--cyan" href="#">Buy tickets</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-xl-3">
+              <div class="pricing-item pricing-item--white pricing-item--style-1 text-center">
+                <div class="pricing-item__top">
+                  <div class="pricing-item__icon">
+                    <svg class="icon">
+                      <use xlink:href="#baby"></use>
+                    </svg>
+                  </div>
+                  <div class="pricing-item__subject">Baby (0-3 yrs)</div>
+                  <div class="pricing-item__price">
+                    <span> </span><span class="color--cyan">Free</span>
+                  </div>
+                </div>
+                <div class="pricing-item__lower">
+                  <a class="pricing-item__button button button--cyan" href="#">Buy tickets</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- section end-->
+      <!-- info block start-->
+      <section class="section info-block">
+        <img class="img--bg" src="img/promo_2f2.jpg" alt="img" />
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-5">
+              <div class="heading heading--style-2 heading--cyan">
+                <span class="heading__pre-title color--white">Donations</span>
+                <h2 class="heading__title color--white">
+                  <span># Donations for</span> <br />
+                  <span>the zoo Berlin</span>
+                </h2>
+              </div>
+              <p class="color--white">
+                Zoo Berlin relies on your support as a non-profit
+                organisation. You donations help to fund not only the food
+                supply and the upkeep of our animals, but also the maintenance
+                and structural adaptation of the enclosures in accordance with
+                the latest insights into modern animal management. We have a
+                lot on our agenda at Zoo Berlin for the future-exactly what
+                can be seen in our target and development plan.
+              </p>
+              <a class="info-block__button button button--cyan" href="#">Donate</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- info block end-->
+      <!-- section start-->
+      <section class="section testimonials testimonials--style-1 testimonials--cyan">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 d-none d-lg-block">
+              <div class="testimonials__img">
+                <img class="img--bg" src="img/man.jpg" alt="img" />
+              </div>
+            </div>
+            <div class="col-lg-9">
+              <div class="row align-items-center">
+                <div class="col-md-7">
+                  <div class="heading heading--primary">
+                    <span class="heading__pre-title">Testimonials</span>
+                    <h2 class="heading__title">
+                      <span>What People<br />
+                        Says</span>
+                      <span>About Us</span>
+                    </h2>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="testimonials--style-1__dots dots--style-3 text-md-right"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="testimonials-slider testimonials-slider--style-1">
+                    <div class="testimonials-slider__item">
+                      <div class="testimonials-slider__text">
+                        <p>
+                          Rudderfish long-finned pikerazorfish menhaden
+                          paradise fish, barramundi oceanic flyingfish.
+                          Fangtooth yellowtail banded killifish seamoth
+                          triplefin blenny desert pupfish crocodile shark
+                          catfish cutlassfish broadband dogfish whalefish.
+                        </p>
+                      </div>
+                      <div class="testimonials-slider__details">
+                        <span class="testimonials-slider__name">John Maclein</span>
+                      </div>
+                    </div>
+                    <div class="testimonials-slider__item">
+                      <div class="testimonials-slider__text">
+                        <p>
+                          Rudderfish long-finned pikerazorfish menhaden
+                          paradise fish, barramundi oceanic flyingfish.
+                          Fangtooth yellowtail banded killifish seamoth
+                          triplefin blenny desert pupfish crocodile shark
+                          catfish cutlassfish broadband dogfish whalefish.
+                        </p>
+                        <p>
+                          Rudderfish long-finned pikerazorfish menhaden
+                          paradise fish, barramundi oceanic flyingfish.
+                          Fangtooth yellowtail banded killifish seamoth
+                          triplefin blenny desert pupfish crocodile shark
+                          catfish cutlassfish broadband dogfish whalefish.
+                        </p>
+                      </div>
+                      <div class="testimonials-slider__details">
+                        <span class="testimonials-slider__name">John Maclein</span>
+                      </div>
+                    </div>
+                    <div class="testimonials-slider__item">
+                      <div class="testimonials-slider__text">
+                        <p>
+                          Rudderfish long-finned pikerazorfish menhaden
+                          paradise fish, barramundi oceanic flyingfish.
+                          Fangtooth yellowtail banded killifish seamoth
+                          triplefin blenny desert pupfish crocodile shark
+                          catfish cutlassfish broadband dogfish whalefish.
+                        </p>
+                        <p>
+                          Rudderfish long-finned pikerazorfish menhaden
+                          paradise fish, barramundi oceanic flyingfish.
+                          Fangtooth yellowtail banded killifish seamoth
+                          triplefin blenny desert pupfish crocodile shark
+                          catfish cutlassfish broadband dogfish whalefish.
+                        </p>
+                        <p>
+                          Rudderfish long-finned pikerazorfish menhaden
+                          paradise fish, barramundi oceanic flyingfish.
+                          Fangtooth yellowtail banded killifish seamoth
+                          triplefin blenny desert pupfish crocodile shark
+                          catfish cutlassfish broadband dogfish whalefish.
+                        </p>
+                      </div>
+                      <div class="testimonials-slider__details">
+                        <span class="testimonials-slider__name">John Maclein</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- section end-->
+      <!-- section start-->
+      <section class="section events-carousel no-padding-bottom">
+        <img class="events-carousel__bg" src="img/line-bg.jpg" alt="bg" />
+        <div class="container">
+          <div class="row bottom-50 align-items-end">
+            <div class="col-md-7 col-lg-6">
+              <div class="heading heading--style-2 heading--cyan">
+                <span class="heading__pre-title">Events</span>
+                <h2 class="heading__title no-margin-bottom">
+                  <span>What’s</span> <span>coming up?</span>
+                </h2>
+              </div>
+            </div>
+            <div class="col-md-5 col-lg-6 d-flex align-items-center justify-content-md-end">
+              <div class="destination-slider__dots destination-slider__dots--front-2 dots--style-3"></div>
+              <a class="button button--cyan d-none d-lg-inline-block" href="#">Full calendar</a>
+            </div>
+          </div>
+        </div>
+        <div class="slider-holder">
+          <div class="slider-holder__wrapper">
+            <div class="destination-slider destination-slider--style-2">
+              <div class="destination-slider__item">
+                <div class="destination-item destination-item--style-3">
+                  <img class="img--bg" src="img/events-sl_6.jpg" alt="img" />
+                  <div class="destination-item__count">
+                    <span>01</span><span>nov</span>
+                  </div>
+                  <div class="destination-item__details">
+                    <span class="destination-item__day">Tuesday</span>
+                    <h6 class="destination-item__title">Colorful Fishes</h6>
+                    <a class="destination-item__link" href="#">Read more</a>
+                  </div>
+                </div>
+              </div>
+              <div class="destination-slider__item">
+                <div class="destination-item destination-item--style-3">
+                  <img class="img--bg" src="img/events-sl_7.jpg" alt="img" />
+                  <div class="destination-item__count">
+                    <span>13</span><span>nov</span>
+                  </div>
+                  <div class="destination-item__details">
+                    <span class="destination-item__day">Tuesday</span>
+                    <h6 class="destination-item__title">Jellyfish Dance</h6>
+                    <a class="destination-item__link" href="#">Read more</a>
+                  </div>
+                </div>
+              </div>
+              <div class="destination-slider__item">
+                <div class="destination-item destination-item--style-3">
+                  <img class="img--bg" src="img/events-sl_8.jpg" alt="img" />
+                  <div class="destination-item__count">
+                    <span>13</span><span>nov</span>
+                  </div>
+                  <div class="destination-item__details">
+                    <span class="destination-item__day">Tuesday</span>
+                    <h6 class="destination-item__title">Awesome Corals</h6>
+                    <a class="destination-item__link" href="#">Read more</a>
+                  </div>
+                </div>
+              </div>
+              <div class="destination-slider__item">
+                <div class="destination-item destination-item--style-3">
+                  <img class="img--bg" src="img/events-sl_9.jpg" alt="img" />
+                  <div class="destination-item__count">
+                    <span>14</span><span>nov</span>
+                  </div>
+                  <div class="destination-item__details">
+                    <span class="destination-item__day">Tuesday</span>
+                    <h6 class="destination-item__title">
+                      Amazing Water World
+                    </h6>
+                    <a class="destination-item__link" href="#">Read more</a>
+                  </div>
+                </div>
+              </div>
+              <div class="destination-slider__item">
+                <div class="destination-item destination-item--style-3">
+                  <img class="img--bg" src="img/events-sl_7.jpg" alt="img" />
+                  <div class="destination-item__count">
+                    <span>15</span><span>nov</span>
+                  </div>
+                  <div class="destination-item__details">
+                    <span class="destination-item__day">Tuesday</span>
+                    <h6 class="destination-item__title">Awesome Corals</h6>
+                    <a class="destination-item__link" href="#">Read more</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container top-50 d-block d-lg-none">
+          <div class="row">
+            <div class="col-12 text-center">
+              <a class="button button--cyan" href="#">Full calendar</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- section end-->
+      <!-- section start-->
+      <section class="section">
+        <div class="container">
+          <div class="row bottom-50">
+            <div class="col-12">
+              <div class="heading heading--primary heading--center">
+                <span class="heading__pre-title">Our partners</span>
+                <h2 class="heading__title no-margin-bottom">
+                  <span>People Who</span> <span>Trust Us</span>
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="logos-slider">
+                <div class="logos-slider__item">
+                  <img src="img/logo_1.png" alt="logo" />
+                </div>
+                <div class="logos-slider__item">
+                  <img src="img/logo_2.png" alt="logo" />
+                </div>
+                <div class="logos-slider__item">
+                  <img src="img/logo_3.png" alt="logo" />
+                </div>
+                <div class="logos-slider__item">
+                  <img src="img/logo_4.png" alt="logo" />
+                </div>
+                <div class="logos-slider__item">
+                  <img src="img/logo_5.png" alt="logo" />
+                </div>
+              </div>
+              <div class="logos-slider__dots dots--style-3"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- section end-->
+      <!-- instagram start-->
+      <section class="section instagram no-padding-top">
+        <div class="container">
+          <div class="row align-items-end bottom-50">
+            <div class="col-12">
+              <div class="heading heading--style-2 heading--cyan">
+                <span class="heading__pre-title">Instagram</span>
+                <h2 class="heading__title no-margin-bottom">
+                  <span># Awesome</span> <span>aquarium</span>
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="instagram-slider instagram-slider--style-2">
+          <a class="instagram-slider__item" href="#"><img class="img--bg" src="img/a_ig-1.jpg" alt="img" /><span
+              class="instagram-slider__icon"><i class="fa fa-instagram" aria-hidden="true"></i></span><span
+              class="instagram-slider__icon-hover"><i class="fa fa-instagram" aria-hidden="true"></i></span></a><a
+            class="instagram-slider__item" href="#"><img class="img--bg" src="img/a_ig-2.jpg" alt="img" /><span
+              class="instagram-slider__icon"><i class="fa fa-instagram" aria-hidden="true"></i></span><span
+              class="instagram-slider__icon-hover"><i class="fa fa-instagram" aria-hidden="true"></i></span></a><a
+            class="instagram-slider__item" href="#"><img class="img--bg" src="img/a_ig-3.jpg" alt="img" /><span
+              class="instagram-slider__icon"><i class="fa fa-instagram" aria-hidden="true"></i></span><span
+              class="instagram-slider__icon-hover"><i class="fa fa-instagram" aria-hidden="true"></i></span></a><a
+            class="instagram-slider__item" href="#"><img class="img--bg" src="img/a_ig-4.jpg" alt="img" /><span
+              class="instagram-slider__icon"><i class="fa fa-instagram" aria-hidden="true"></i></span><span
+              class="instagram-slider__icon-hover"><i class="fa fa-instagram" aria-hidden="true"></i></span></a><a
+            class="instagram-slider__item" href="#"><img class="img--bg" src="img/a_ig-5.jpg" alt="img" /><span
+              class="instagram-slider__icon"><i class="fa fa-instagram" aria-hidden="true"></i></span><span
+              class="instagram-slider__icon-hover"><i class="fa fa-instagram" aria-hidden="true"></i></span></a><a
+            class="instagram-slider__item" href="#"><img class="img--bg" src="img/a_ig-6.jpg" alt="img" /><span
+              class="instagram-slider__icon"><i class="fa fa-instagram" aria-hidden="true"></i></span><span
+              class="instagram-slider__icon-hover"><i class="fa fa-instagram" aria-hidden="true"></i></span></a><a
+            class="instagram-slider__item" href="#"><img class="img--bg" src="img/a_ig-4.jpg" alt="img" /><span
+              class="instagram-slider__icon"><i class="fa fa-instagram" aria-hidden="true"></i></span><span
+              class="instagram-slider__icon-hover"><i class="fa fa-instagram" aria-hidden="true"></i></span></a>
+        </div>
+      </section>
+      <!-- instagram end-->
+    </main>
+    <!-- footer start-->
+    <footer class="footer footer--front-2">
+      <img class="footer__bg img--bg" src="img/footer-bg.png" alt="bg" />
+      <div class="footer__top">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <ul class="footer-menu">
+                <li class="footer-menu__item">
+                  <a class="footer-menu__link" href="#">Home</a>
+                </li>
+                <li class="footer-menu__item">
+                  <a class="footer-menu__link" href="#">Pages</a>
+                </li>
+                <li class="footer-menu__item">
+                  <a class="footer-menu__link" href="#">Animals</a>
+                </li>
+                <li class="footer-menu__item">
+                  <a class="footer-menu__link" href="#">Schedule</a>
+                </li>
+                <li class="footer-menu__item">
+                  <a class="footer-menu__link" href="#">Gallery</a>
+                </li>
+                <li class="footer-menu__item">
+                  <a class="footer-menu__link" href="#">Blog</a>
+                </li>
+                <li class="footer-menu__item">
+                  <a class="footer-menu__link" href="#">Contacts</a>
+                </li>
+                <li class="footer-menu__item">
+                  <a class="footer-menu__link" href="#">Elements</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12">
+              <ul class="socials">
+                <li class="socials__item">
+                  <a class="socials__link" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                </li>
+                <li class="socials__item">
+                  <a class="socials__link" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                </li>
+                <li class="socials__item">
+                  <a class="socials__link" href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                </li>
+                <li class="socials__item">
+                  <a class="socials__link" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12">
+              <ul class="footer-submenu">
+                <li class="footer-submenu__item">
+                  <a class="footer-submenu__link" href="#">Membership</a>
+                </li>
+                <li class="footer-submenu__item">
+                  <a class="footer-submenu__link" href="#">Education</a>
+                </li>
+                <li class="footer-submenu__item">
+                  <a class="footer-submenu__link" href="#">Map</a>
+                </li>
+                <li class="footer-submenu__item">
+                  <a class="footer-submenu__link" href="#">Events</a>
+                </li>
+                <li class="footer-submenu__item">
+                  <a class="footer-submenu__link" href="#">Donate</a>
+                </li>
+                <li class="footer-submenu__item">
+                  <a class="footer-submenu__link" href="#">Foundation</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer__lower">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-4 text-center text-lg-left">
+              <a class="footer__link" href="#"><img src="img/footer-logo.png" alt="logo" /></a>
+            </div>
+            <div class="col-lg-4 text-center">
+              <div class="footer-privacy">
+                <a class="footer-privacy__link" href="#">Privacy Policy</a><span
+                  class="footer-privacy__divider">|</span><a class="footer-privacy__link" href="#">Term and
+                  Condision</a>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="footer__details text-center text-lg-right">
+                <p>
+                  <strong>Location:</strong>
+                  <span>av. Washington 165, NY CA 54003</span>
+                </p>
+                <p>
+                  <strong>Phone:</strong>
+                  <a href="tel:+31859644725">+31 85 964 47 25</a>
+                  <a href="tel:+31859644725">+31 65 792 63 11</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer end-->
+  </div>
+  <!-- libs-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="{% static 'web/js/libs.min.js' %}"></script>
+  <!-- scripts-->
+  <script src="{% static 'web/js/common.js' %}"></script>
 
-  <script>
-    // Obtener elementos de la modal
-    var modal = document.getElementById("loginModal");
-    var btn = document.getElementById("loginBtn");
-    var span = document.getElementsByClassName("close")[0];
-
-    // Abrir la modal al hacer clic en el botón
-    btn.onclick = function () {
-      modal.style.display = "block";
-    }
-
-    // Cerrar la modal al hacer clic en la X
-    span.onclick = function () {
-      modal.style.display = "none";
-    }
-
-    // Cerrar la modal al hacer clic fuera del contenido de la modal
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-  </script>
 </body>
 
 </html>
