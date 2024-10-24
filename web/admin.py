@@ -20,3 +20,35 @@ admin.site.register(Menu, MenuAdmin)
 
 # Registra el modelo en el admin
 admin.site.register(Proyectos)
+
+# Registra el modelo en el admin
+admin.site.register(SeccionWeb1)
+
+# Registra el modelo en el admin
+admin.site.register(SeccionWeb2)
+
+# Registra el modelo en el admin
+admin.site.register(SeccionWeb3)
+
+# Registra el modelo en el admin
+admin.site.register(SeccionWeb4)
+
+# Registra el modelo en el admin
+admin.site.register(SeccionWeb5)
+# Registra el modelo en el admin
+admin.site.register(SeccionWeb6)
+
+# Registra el modelo en el admin
+admin.site.register(Testimonio)
+
+# Registra el modelo en el admin
+admin.site.register(SeccionWeb7)
+
+# Registra el modelo en el admin
+admin.site.register(SeccionWeb8)
+
+# Registra el modelo en el admin
+admin.site.register(Logo)
+
+# Registra el modelo en el admin
+admin.site.register(SeccionWeb9)
