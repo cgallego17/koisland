@@ -22,7 +22,9 @@ class Web(ClaseModelo):
 
 # modelo de banners
 class Banners(ClaseModelo):
+    breadcrumb= models.CharField(max_length=255)
     titulo = models.CharField(max_length=100, verbose_name="Título de la Imagen")
+    texto= models.CharField(max_length=255)
     imagen = models.ImageField(upload_to='imagenes/album/imagenes/', verbose_name="Imagen")
 
     def __str__(self):
@@ -239,4 +241,22 @@ class SeccionWeb9(models.Model):
     logo = models.ManyToManyField(Logo, related_name='logos')
 
     def __str__(self):
-        return f"{self.titulo}"                          
+        return f"{self.titulo}"
+
+#Logos
+class imagenesIg(models.Model):
+    titulo= models.CharField(max_length=255)
+    imagen = models.ImageField(upload_to='logos/')
+
+    def __str__(self):
+        return self.titulo                              
+    
+#Seccion10 Web
+class SeccionWeb10(models.Model):
+    #titulos
+    breadcrumb= models.CharField(max_length=255)
+    titulo= models.CharField(max_length=255)
+    imgIg = models.ManyToManyField(imagenesIg, related_name='imagenesIg')
+
+    def __str__(self):
+        return f"{self.titulo}"     

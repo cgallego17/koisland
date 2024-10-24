@@ -14,6 +14,7 @@ def inicio(request):
     Seccion7 = SeccionWeb7.objects.all().first()
     Seccion8 = SeccionWeb8.objects.all().first()
     Seccion9 = SeccionWeb9.objects.all().first()
+    Seccion10 = SeccionWeb10.objects.all().first()
     logos = Logo.objects.all()
 
     #Galerias
@@ -24,7 +25,11 @@ def inicio(request):
     galeriaHome= ImageGallery.objects.filter(album_id=5)
     #testimonio
     testimonios=Testimonio.objects.filter(activo=True)
-    
+    #Imagenes Ig
+    imgIg= imagenesIg.objects.all()
+    #Banners
+    banners=Banners.objects.all()
+
     context={
         'menus': men,
         'proyectos': pro,
@@ -38,11 +43,14 @@ def inicio(request):
         'Seccion7': Seccion7,
         'Seccion8': Seccion8,
         'Seccion9': Seccion9,
+        'Seccion10': Seccion10,
         'testimonios': testimonios,
         'categoria': categoria,
         'galeria': galeria,
         'galeriaHome': galeriaHome,
         'logos': logos,
+        'imgIg': imgIg,
+        'banners': banners,
     }
 
     return render(request, 'inicio.html', context)

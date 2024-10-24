@@ -430,54 +430,39 @@
               </div>
             </div>
           </div>
-          <div class="promo-slider__item promo-slider__item--style-2">
-            <picture>
-              <source srcset="{% static 'web/img/promo_2f2.jpg' %}" media="(min-width: 992px)" />
-              <img class="img--bg" src="{% static 'web/img/promo_2f2.jpg' %}" alt="img" />
-            </picture>
-            <div class="container">
-              <div class="row">
-                <div class="col-xl-7">
-                  <div class="align-container">
-                    <div class="align-container__item">
-                      <div class="promo-slider__wrapper-1">
-                        <h2 class="promo-slider__title">
-                          <span>Awesome</span><br />
-                          <span>Colorful Corals</span>
-                        </h2>
-                      </div>
-                      <div class="promo-slider__wrapper-2">
-                        <p class="promo-slider__subtitle">
-                          Animals World accreditation standards. Members are
-                          proactive in both undertaking and applying animal
-                          welfare scientific research, contributing to EAZA
-                          being a recognised
-                        </p>
-                      </div>
-                      <div class="promo-slider__wrapper-3">
-                        <a class="button promo-slider__button button--primary button--cyan" href="#">Discover</a>
+
+          {% for b in banners %}
+            <div class="promo-slider__item promo-slider__item--style-2">
+              <picture>
+                <source srcset="{{b.imagen.url}}" media="(min-width: 992px)" />
+                <img class="img--bg" src="{{b.imagen.url}}" alt="img" />
+              </picture>
+              <div class="container">
+                <div class="row">
+                  <div class="col-xl-7">
+                    <div class="align-container">
+                      <div class="align-container__item">
+                        <div class="promo-slider__wrapper-1">
+                          <h2 class="promo-slider__title">
+                            <span>{{b.breadcrumb}}</span><br />
+                            <span>{{b.titulo}}</span>
+                          </h2>
+                        </div>
+                        <div class="promo-slider__wrapper-2">
+                          <p class="promo-slider__subtitle">
+                            {{b.texto}}
+                          </p>
+                        </div>
+                        <div class="promo-slider__wrapper-3">
+                          <a class="button promo-slider__button button--primary button--cyan" href="#">Discover</a>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="promo-slider__item promo-slider__item--style-3">
-            <picture>
-              <source srcset="{% static 'web/img/promo_3f2.jpg' %}" media="(min-width: 992px)" />
-              <img class="img--bg" src="{% static 'web/img/promo_3f2.jpg' %}" alt="img" />
-            </picture>
-            <div class="container">
-              <div class="row">
-                <div class="col-xl-8 offset-xl-2">
-                  <div class="align-container">
-                    <div class="align-container__item"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
         <!-- promo pannel start-->
         <div class="promo-pannel">
@@ -1018,36 +1003,29 @@
           <div class="row align-items-end bottom-50">
             <div class="col-12">
               <div class="heading heading--style-2 heading--cyan">
-                <span class="heading__pre-title">Instagram</span>
+                <span class="heading__pre-title">{{Seccion10.breadcrumb}}</span>
                 <h2 class="heading__title no-margin-bottom">
-                  <span># Awesome</span> <span>aquarium</span>
+                  <span>{{Seccion10.titulo}}</span>
                 </h2>
               </div>
             </div>
           </div>
         </div>
         <div class="instagram-slider instagram-slider--style-2">
-          <a class="instagram-slider__item" href="#"><img class="img--bg" src="img/a_ig-1.jpg" alt="img" /><span
-              class="instagram-slider__icon"><i class="fa fa-instagram" aria-hidden="true"></i></span><span
-              class="instagram-slider__icon-hover"><i class="fa fa-instagram" aria-hidden="true"></i></span></a><a
-            class="instagram-slider__item" href="#"><img class="img--bg" src="img/a_ig-2.jpg" alt="img" /><span
-              class="instagram-slider__icon"><i class="fa fa-instagram" aria-hidden="true"></i></span><span
-              class="instagram-slider__icon-hover"><i class="fa fa-instagram" aria-hidden="true"></i></span></a><a
-            class="instagram-slider__item" href="#"><img class="img--bg" src="img/a_ig-3.jpg" alt="img" /><span
-              class="instagram-slider__icon"><i class="fa fa-instagram" aria-hidden="true"></i></span><span
-              class="instagram-slider__icon-hover"><i class="fa fa-instagram" aria-hidden="true"></i></span></a><a
-            class="instagram-slider__item" href="#"><img class="img--bg" src="img/a_ig-4.jpg" alt="img" /><span
-              class="instagram-slider__icon"><i class="fa fa-instagram" aria-hidden="true"></i></span><span
-              class="instagram-slider__icon-hover"><i class="fa fa-instagram" aria-hidden="true"></i></span></a><a
-            class="instagram-slider__item" href="#"><img class="img--bg" src="img/a_ig-5.jpg" alt="img" /><span
-              class="instagram-slider__icon"><i class="fa fa-instagram" aria-hidden="true"></i></span><span
-              class="instagram-slider__icon-hover"><i class="fa fa-instagram" aria-hidden="true"></i></span></a><a
-            class="instagram-slider__item" href="#"><img class="img--bg" src="img/a_ig-6.jpg" alt="img" /><span
-              class="instagram-slider__icon"><i class="fa fa-instagram" aria-hidden="true"></i></span><span
-              class="instagram-slider__icon-hover"><i class="fa fa-instagram" aria-hidden="true"></i></span></a><a
-            class="instagram-slider__item" href="#"><img class="img--bg" src="img/a_ig-4.jpg" alt="img" /><span
-              class="instagram-slider__icon"><i class="fa fa-instagram" aria-hidden="true"></i></span><span
-              class="instagram-slider__icon-hover"><i class="fa fa-instagram" aria-hidden="true"></i></span></a>
+          {% for ig in imgIg %}
+            <a class="instagram-slider__item" href="#">
+              <img class="img--bg" src="{{ig.imagen.url}}" alt="img" />
+              <span class="instagram-slider__icon">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </span>
+
+              <span class="instagram-slider__icon-hover">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </span>
+            </a>
+          {% endfor %}
+          
+        
         </div>
       </section>
       <!-- instagram end-->

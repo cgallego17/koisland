@@ -52,3 +52,12 @@ admin.site.register(Logo)
 
 # Registra el modelo en el admin
 admin.site.register(SeccionWeb9)
+
+# Registra el modelo en el admin
+admin.site.register(imagenesIg)
+
+# Registra el modelo en el admin
+admin.site.register(SeccionWeb10)
+
+# Registra el modelo en el admin
+admin.site.register(Banners)
